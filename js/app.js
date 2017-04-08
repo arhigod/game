@@ -100,6 +100,17 @@
             isPause = false;
         });
 
+        [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e,i) => e.addEventListener('click', function() {
+            [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), item => item.classList.remove('selected'));
+            e.classList.add('selected');
+            players[0].changeskin('img/player'+(i+1)+'.png');
+        }));
+        [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), (e,i) => e.addEventListener('click', function() {
+            [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), item => item.classList.remove('selected'));
+            e.classList.add('selected');
+            players[1].changeskin('img/player'+(i+1)+'.png');
+        }));
+
         reset();
         lastTime = Date.now();
         main();
@@ -139,6 +150,11 @@
         this.bullets = 100;
         this.ammoBar = { sprite: new Sprite('img/ammo.png', [0, 400], [20, 4]), pos: [this.pos[0], this.pos[1] - 10] };
         this.weaponBar = { sprite: this.weapon.sprite, pos: [this.pos[0] + 23, this.pos[1] - 18], weaponBar: true };
+
+        this.changeskin = function(skin) {
+            this.skin = skin;
+            this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
+        }
 
         this.actions = function(dt) {
             this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
@@ -248,8 +264,8 @@
     var bulletSpeed = 500;
     var enemySpeed = 100;
 
-    players.push(new Player(0, { up: 's', left: 'z', right: 'c', shoot: 'SHIFT' }, 'img/player1.png'));
-    players.push(new Player(1, { up: 'k', left: 'm', right: '.', shoot: '/' }, 'img/player3.png'));
+    players.push(new Player(0, { up: 's', left: 'z', right: 'c', shoot: 'SHIFT' }, 'img/player3.png'));
+    players.push(new Player(1, { up: 'k', left: 'm', right: '.', shoot: '/' }, 'img/player2.png'));
     // Update game objects
     function update(dt) {
         gameTime += dt;

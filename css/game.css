@@ -67,9 +67,9 @@ canvas {
     top: 50%;
     left: 50%;
     display: none;
-    width: 500px;
+    width: 700px;
     height: 300px;
-    margin: -150px 0 0 -250px;
+    margin: -150px 0 0 -350px;
     text-align: center;
     color: white;
 }
@@ -98,4 +98,57 @@ canvas {
 
 .button:hover {
     background-position: left -87px;
+}
+
+.changeskin {
+    font-size: 0;
+    overflow: hidden;
+    width: 100px;
+    height: 400px;
+    margin-top: -280px;
+    padding: 0;
+    float: left;
+}
+
+.changeskin.player2 {
+    float: right;
+}
+
+.changeskin > li {
+    position: relative;
+    display: block;
+    width: 90px;
+    height: 100px;
+    margin: 15px 0;
+    padding: 1px;
+    cursor: pointer;
+    background: linear-gradient(to top, #151515, black);
+}
+
+.changeskin > li:hover {
+    margin: 13px 0;
+    border: 2px solid #5a5c5f;
+}
+
+.changeskin > li.selected {
+    margin: 13px 0;
+    border: 2px solid #f74d01;
+}
+
+.changeskin > li > span {
+    display: block;
+    width: 90px;
+    height: 100px;
+}
+
+.changeskin > li > span.type1 {
+    background-image: url(./../img/player1mini.png);
+}
+
+.changeskin > li > span.type2 {
+    background-image: url(./../img/player2mini.png);
+}
+
+.changeskin > li > span.type3 {
+    background-image: url(./../img/player3mini.png);
 }
