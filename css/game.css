@@ -119,21 +119,30 @@ canvas {
     display: block;
     width: 90px;
     height: 100px;
-    margin: 15px 0;
+    margin-bottom: 15px;
     padding: 1px;
     cursor: pointer;
     background: linear-gradient(to top, #151515, black);
 }
 
 .changeskin > li:hover {
-    margin: 13px 0;
-    border: 2px solid #5a5c5f;
+    margin-bottom: 11px;
+    border: 2px solid #aa5c5f;
 }
 
 .changeskin > li.selected {
-    margin: 13px 0;
+    margin-bottom: 11px;
     border: 2px solid #f74d01;
 }
+/*.changeskin > li:first-child:hover {
+    margin: 0;
+}
+.changeskin > li:first-child {
+    margin: 0;
+}
+.changeskin > li:first-child.selected {
+    margin:0;
+}*/
 
 .changeskin > li > span {
     display: block;
