@@ -21,9 +21,11 @@ canvas {
 }
 
 .wrapper {
-    width: 512px;
+    position: relative;
+    width: 600px;
     height: 40px;
     margin: 8px auto;
+    text-align: center;
 }
 
 .instructions {
@@ -34,6 +36,12 @@ canvas {
 
 .right {
     float: right;
+}
+
+.middle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .key {
