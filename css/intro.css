@@ -1,0 +1,553 @@
+@font-face {
+    font-family: Jaapokki;
+    src: url(../fonts/jaapokkienchance-regular.ttf);
+}
+
+@font-face {
+    font-family: ghost;
+    src: url(../fonts/ghost.ttf);
+}
+
+@font-face {
+    font-family: batman;
+    src: url(../fonts/batman.ttf);
+}
+
+@font-face {
+    font-family: marsh;
+    src: url(../fonts/marsh.otf);
+}
+
+@font-face {
+    font-family: standart;
+    src: url(../fonts/standart.ttf);
+}
+
+@font-face {
+    font-family: btn;
+    src: url(../fonts/btn.ttf);
+}
+
+
+/*  Page  */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    height: 4106px;
+    margin: 0;
+    background: #000 url(./../img/bg.jpg) center top no-repeat;
+}
+
+h1 {
+    font: 190px Jaapokki;
+    margin: 16px 0;
+    cursor: default;
+    text-align: center;
+    text-transform: uppercase;
+    color: red;
+}
+
+h2 {
+    font: 55px/58px batman;
+    margin: 0 0 16px 0;
+    cursor: default;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff3d00;
+}
+
+.layout {
+    position: relative;
+    overflow: hidden;
+    min-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.content {
+    overflow: hidden;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.content:not(:first-child) {
+    background: rgba(0, 0, 0, .8);
+}
+
+.content > p {
+    font: 24px/28px batman;
+    margin: 16px 0;
+    cursor: default;
+    text-align: center;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: #ddd;
+}
+
+.content.top {
+    height: 750px;
+}
+
+.game_button {
+    font: 20px/62px btn;
+    display: block;
+    width: 441px;
+    height: 107px;
+    margin: 50px auto 24px auto;
+    padding-top: 44px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    background-image: url(./../img/btn.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
+.game_button:hover {
+    background-image: url(./../img/btn-hover.png);
+}
+
+.menu {
+    font-size: 0;
+    position: absolute;
+    left: 50%;
+    width: 1000px;
+    height: 62px;
+    margin: 0 auto;
+    padding: 0;
+    transform: translate(-50%, 0);
+    text-align: center;
+    background: rgba(0, 0, 0, .8);
+}
+
+.menu.fixed {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+}
+
+.menu > li {
+    font: 24px/62px marsh;
+    display: inline;
+    padding: 12px 17px;
+    list-style: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #828282;
+}
+
+.menu > li:hover {
+    color: #ff3d00;
+}
+
+.content.fix {
+    height: 100px;
+    margin-top: 62px;
+}
+
+
+/* Weapons */
+
+.content.weapons {
+    height: 650px;
+}
+
+.weapon {
+    position: relative;
+    overflow: hidden;
+    width: 649px;
+    height: 350px;
+    margin: 0 auto;
+    cursor: default;
+}
+
+.weapon > .icon {
+    position: absolute;
+    width: 649px;
+    height: 350px;
+}
+
+.weapon > .name {
+    font: 24px/40px standart;
+    position: absolute;
+    top: 220px;
+    padding: 0 32px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.weapon > .desc {
+    font: 17px/20px standart;
+    position: absolute;
+    top: 264px;
+    width: 333px;
+    padding: 0 32px;
+    color: #fff;
+}
+
+.weapon_list {
+    font-size: 0;
+    overflow: hidden;
+    width: 591px;
+    height: 84px;
+    margin: 0 auto 8px;
+    padding: 0;
+    text-align: center;
+}
+
+.weapon_list > li {
+    position: relative;
+    display: inline-block;
+    width: 102px;
+    height: 76px;
+    margin-left: 30px;
+    padding: 1px;
+    cursor: pointer;
+    background: linear-gradient(to top, #151515, black);
+}
+
+.weapon_list > li:first-child {
+    margin-left: 0;
+}
+
+.weapon_list > li:hover {
+    margin: 0 -1px 0 29px;
+    border: 1px solid #5a5c5f;
+}
+
+.weapon_list > li:first-child:hover {
+    margin: 0 -1px;
+    border: 1px solid #5a5c5f;
+}
+
+.weapon_list > li.selected {
+    margin: 0 -1px 0 29px;
+    border: 1px solid #f74d01;
+}
+
+.weapon_list > li:first-child.selected {
+    margin: 0 -1px;
+    border: 1px solid #f74d01;
+}
+
+.weapon_list > li > span {
+    display: block;
+    width: 102px;
+    height: 76px;
+}
+
+.weapon_list > li > span.type1 {
+    background-image: url(./../img/pistolmini.png);
+}
+
+.weapon_list > li > span.type2 {
+    background-image: url(./../img/ak47mini.png);
+}
+
+.weapon_list > li > span.type3 {
+    background-image: url(./../img/shotgunmini.png);
+}
+
+.weapon_list > li > span.type4 {
+    background-image: url(./../img/rpgmini.png);
+}
+
+
+/* Game */
+
+.content.game {
+    height: 900px;
+}
+
+.content.game > div {
+    position: relative;
+}
+
+.game_layout {
+    overflow: hidden;
+    width: 942px;
+    height: 628px;
+    margin: 0 auto;
+    background: #000;
+}
+
+.game_layout > div {
+    float: left;
+    overflow: hidden;
+    width: 314px;
+    height: 314px;
+    background-repeat: none;
+    background-position: 0 0;
+}
+
+.game_layout > div:nth-child(2) {
+    background-image: url(./../img/art3.png);
+}
+
+.game_layout > div:nth-child(4) {
+    background-image: url(./../img/art2.png);
+}
+
+.game_layout > div:nth-child(6) {
+    background-image: url(./../img/art1.png);
+}
+
+.game_layout h3 {
+    font: 24px/28px standart;
+    margin: 16px 0;
+    padding: 0 32px;
+    text-transform: uppercase;
+    color: #ff4200;
+}
+
+.content.game .game_layout p {
+    font: 21px/26px standart;
+    padding: 0 32px;
+    text-align: left;
+    text-transform: none;
+    color: #fff;
+}
+
+
+/* Classes */
+
+.content.classes {
+    height: 900px;
+}
+
+.classes_layout {
+    position: relative;
+    overflow: hidden;
+    width: 900px;
+    height: 710px;
+    margin: 0 auto;
+}
+
+.classes_layout .area {
+    position: absolute;
+    height: inherit;
+    cursor: pointer;
+}
+
+.classes_layout .area.type1 {
+    left: 0;
+    width: 266px;
+    background-image: url(./../img/ct.png);
+    background-repeat: no-repeat;
+}
+
+.classes_layout .area.type1:hover {
+    background-image: url(./../img/cthover.png);
+}
+
+.classes_layout .area.type2 {
+    left: 350px;
+    width: 199px;
+    background-image: url(./../img/007.png);
+    background-repeat: no-repeat;
+}
+
+.classes_layout .area.type2:hover {
+    background-image: url(./../img/007hover.png);
+}
+
+.classes_layout .area.type3 {
+    left: 642px;
+    width: 258px;
+    background-image: url(./../img/t.png);
+    background-repeat: no-repeat;
+}
+
+.classes_layout .area.type3:hover {
+    background-image: url(./../img/thover.png);
+}
+
+.classes .desc {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    transition: opacity .2s linear;
+    background: rgba(0, 0, 0, 1);
+}
+
+.classes .desc.active {
+    display: block;
+    opacity: 1;
+}
+
+.classes .desc .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: .3;
+    background: url(./../img/classes_close.png) center center no-repeat;
+}
+
+.classes .desc .close:hover {
+    opacity: 1;
+}
+
+.classes .desc .arr {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: inherit;
+    cursor: pointer;
+    opacity: .3;
+    background-image: url(./../img/arr.png);
+    background-repeat: no-repeat;
+}
+
+.classes .desc .arr:hover {
+    opacity: 1;
+}
+
+.classes .desc .arr.left {
+    left: 0;
+    background-position: left center;
+}
+
+.classes .desc .arr.right {
+    right: 0;
+    background-position: right center;
+}
+
+.classes .desc .img {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    width: 340px;
+    height: 675px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.classes .desc.type1 .img {
+    background-image: url(./../img/ct.png);
+}
+
+.classes .desc.type2 .img {
+    background-image: url(./../img/007.png);
+}
+
+.classes .desc.type3 .img {
+    background-image: url(./../img/t.png);
+}
+
+.classes .desc .text {
+    position: absolute;
+    top: 90px;
+    left: 368px;
+    width: 520px;
+    height: 458px;
+}
+
+.classes .desc .text h3 {
+    font: 24px/28px standart;
+    margin: 0;
+    padding: 16px 0;
+    text-align: left;
+    text-transform: uppercase;
+    color: #ff5400;
+}
+
+.classes .desc .text p {
+    font: 21px/26px standart;
+    cursor: default;
+    text-align: left;
+    color: #fff;
+}
+
+
+/* Media */
+
+.content.media {
+    overflow: hidden;
+    min-width: 1000px;
+    height: 370px;
+}
+
+.jcarousel {
+    overflow: hidden;
+    width: 900px;
+    height: 180px;
+    margin: 45px auto;
+}
+
+.jcarousel ul {
+    width: 900px;
+    height: 180px;
+}
+
+.jcarousel li {
+    width: 300px;
+    height: 180px;
+}
+
+
+/* Buttons */
+
+.jcarousel-next,
+.jcarousel-prev {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 180px;
+    cursor: pointer;
+    opacity: .3;
+    background: transparent url(./../img/arr.png) no-repeat;
+}
+
+.jcarousel-next {
+    right: 0;
+    background-position: -50px center;
+}
+
+.jcarousel-prev {
+    left: 0;
+    background-position: 0 center;
+}
+
+.jcarousel-next:hover,
+.jcarousel-prev:hover {
+    opacity: 1;
+}
+
+
+/* Footer */
+
+footer {
+    line-height: 0;
+    width: 100%;
+    min-width: 800px;
+    height: 150px;
+}
+
+footer .copyright {
+    width: 800px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+footer .copyright p {
+    font: 11px;
+    margin: 0;
+    text-align: center;
+    color: #52575a;
+}

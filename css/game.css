@@ -1,0 +1,93 @@
+@font-face {
+    font-family: batman;
+    src: url(../fonts/batman.ttf);
+}
+
+@font-face {
+    font-family: btn;
+    src: url(../fonts/btn.ttf);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #151515;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+}
+
+.wrapper {
+    width: 512px;
+    height: 40px;
+    margin: 8px auto;
+}
+
+.instructions {
+    font-family: sans-serif;
+    float: left;
+    color: #757575;
+}
+
+.right {
+    float: right;
+}
+
+.key {
+    color: #afd;
+}
+
+.pause-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: 1200px;
+    height: 600px;
+    margin: 56px auto 0 auto;
+    opacity: .5;
+    background-color: black;
+}
+
+.pause {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    width: 500px;
+    height: 300px;
+    margin: -150px 0 0 -250px;
+    text-align: center;
+    color: white;
+}
+
+.pause h1 {
+    font: 3em batman;
+}
+
+.button {
+    font: 14px btn;
+    line-height: 84px;
+    display: block;
+    width: 290px;
+    height: 87px;
+    margin: 15px auto 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background-image: url(./../img/buttons.png);
+    background-repeat: no-repeat;
+    background-position: left 0;
+}
+
+.button:hover {
+    background-position: left -87px;
+}
