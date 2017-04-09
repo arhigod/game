@@ -1,6 +1,10 @@
 // A cross-browser requestAnimationFrame
 // See https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/
 (function() {
+    // const Player = require('./Player');
+    // const Bullet = require('./Bullet');
+    // const Weapon = require('./Weapon');
+
     let map = [
         '############################################################',
         '#..........................................................#',
@@ -100,18 +104,17 @@
             isPause = false;
         });
 
-        [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e,i) => e.addEventListener('click', function() {
+        [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) => e.addEventListener('click', function() {
             [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), item => item.classList.remove('selected'));
             e.classList.add('selected');
-            players[0].changeskin('img/player'+(i+1)+'.png');
+            players[0].changeskin('img/player' + (i + 1) + '.png');
         }));
-        [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), (e,i) => e.addEventListener('click', function() {
+        [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), (e, i) => e.addEventListener('click', function() {
             [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), item => item.classList.remove('selected'));
             e.classList.add('selected');
-            players[1].changeskin('img/player'+(i+1)+'.png');
+            players[1].changeskin('img/player' + (i + 1) + '.png');
         }));
 
-        reset();
         lastTime = Date.now();
         main();
     }
@@ -131,32 +134,32 @@
     resources.onReady(init);
 
     // Game state
-    let Player = function(id, controls, skin) {
-        this.id = id;
-        this.controls = controls;
-        this.skin = skin;
-        this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
-        this.pos = this.id === 0 ? [0, 0] : [2000, 0];
-        this.direction = this.id === 0 ? 'right' : 'left';
-        this.lastFire = Date.now();
-        this.jumpCount = 0;
-        this.health = 100;
-        this.healthBar = { sprite: new Sprite('img/hp.png', [0, 400], [40, 4]), pos: this.pos };
-        this.score = 0;
-        this.scoreBar1 = { sprite: new Sprite('img/numbers.png', [50 + (60 * this.score), 50], [60, 90]), pos: [460 + (this.id * 152), 22] };
-        this.scoreBar2 = { sprite: new Sprite('img/numbers.png', [50 + (60 * this.score), 50], [60, 90]), pos: [512 + (this.id * 152), 22] };
-        this.event = 0;
-        this.weapon = defaultWeapon;
-        this.bullets = 100;
-        this.ammoBar = { sprite: new Sprite('img/ammo.png', [0, 400], [20, 4]), pos: [this.pos[0], this.pos[1] - 10] };
-        this.weaponBar = { sprite: this.weapon.sprite, pos: [this.pos[0] + 23, this.pos[1] - 18], weaponBar: true };
-
-        this.changeskin = function(skin) {
+    class Player {
+        constructor(id, controls, skin) {
+            this.id = id;
+            this.controls = controls;
+            this.skin = skin;
+            this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
+            this.pos = this.id === 0 ? [0, 0] : [2000, 0];
+            this.direction = this.id === 0 ? 'right' : 'left';
+            this.lastFire = Date.now();
+            this.jumpCount = 0;
+            this.health = 100;
+            this.healthBar = { sprite: new Sprite('img/hp.png', [0, 400], [40, 4]), pos: this.pos };
+            this.score = 0;
+            this.scoreBar1 = { sprite: new Sprite('img/numbers.png', [50 + (60 * this.score), 50], [60, 90]), pos: [460 + (this.id * 152), 22] };
+            this.scoreBar2 = { sprite: new Sprite('img/numbers.png', [50 + (60 * this.score), 50], [60, 90]), pos: [512 + (this.id * 152), 22] };
+            this.event = 0;
+            this.weapon = defaultWeapon;
+            this.bullets = 100;
+            this.ammoBar = { sprite: new Sprite('img/ammo.png', [0, 400], [20, 4]), pos: [this.pos[0], this.pos[1] - 10] };
+            this.weaponBar = { sprite: this.weapon.sprite, pos: [this.pos[0] + 23, this.pos[1] - 18], weaponBar: true };
+        }
+        changeskin(skin) {
             this.skin = skin;
             this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
         }
-
-        this.actions = function(dt) {
+        actions(dt) {
             this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
             if (input.isDown(this.controls.left)) this.actionLeft(dt);
             if (input.isDown(this.controls.right)) this.actionRight(dt);
@@ -164,27 +167,24 @@
             if (this.jumpCount > 0) this.sprite = new Sprite(this.skin, [119 + (this.skin == 'img/player2.png' ? 8 : 0), 176], [31, 38]);
             if (input.isDown(this.controls.shoot) && Date.now() - this.lastFire > this.weapon.speed) this.actionShoot();
         }
-        this.actionLeft = function(dt) {
+        actionLeft(dt) {
             this.pos[0] -= playerSpeed * dt;
             this.direction = 'left';
             this.sprite = new Sprite(this.skin, [57 + 31 * Math.floor((this.event++ % 18) / 3), 100], [31, 38]);
         }
-
-        this.actionRight = function(dt) {
+        actionRight(dt) {
             this.pos[0] += playerSpeed * dt;
             this.direction = 'right';
             this.sprite = new Sprite(this.skin, [57 + 31 * Math.floor((this.event++ % 18) / 3), 100], [31, 38]);
         }
-
-        this.actionUp = function() {
+        actionUp() {
             for (let i = 0; i < terra.length; i++) {
                 if (boxCollides([terra[i].pos[0] + 2, terra[i].pos[1]], [16, 1], [this.pos[0], this.pos[1] + this.sprite.size[1]], [this.sprite.size[0], 1])) {
                     this.jumpCount = 25;
                 }
             }
         }
-
-        this.actionShoot = function() {
+        actionShoot() {
             let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];
             this.weapon.move.forEach(move => {
                 let moveDirection = [this.direction == 'right' ? move[0] : -1 * move[0], move[1]];
@@ -200,25 +200,29 @@
             this.ammoBar = { sprite: new Sprite('img/ammo.png', [0, this.bullets * 4], [20, 4]), pos: [this.pos[0], this.pos[1] - 10] };
         }
     }
-    let Bullet = function(id, pos, dir, moveDirection, sprite, damage) {
-        this.id = id;
-        this.pos = pos;
-        this.direction = dir;
-        this.moveDirection = moveDirection;
-        this.sprite = sprite;
-        this.damage = damage;
-        this.update = function(dt) {
+    class Bullet {
+        constructor(id, pos, dir, moveDirection, sprite, damage) {
+            this.id = id;
+            this.pos = pos;
+            this.direction = dir;
+            this.moveDirection = moveDirection;
+            this.sprite = sprite;
+            this.damage = damage;
+        }
+        update(dt) {
             this.pos[0] += (bulletSpeed * dt) * this.moveDirection[0];
             this.pos[1] += (bulletSpeed * dt) * this.moveDirection[1];
         }
     }
-    let Weapon = function(name, damage, speed, bulletCost, move, sprite) {
-        this.name = name;
-        this.sprite = sprite;
-        this.damage = damage;
-        this.move = move;
-        this.speed = speed;
-        this.bulletCost = bulletCost;
+    class Weapon {
+        constructor(name, damage, speed, bulletCost, move, sprite) {
+            this.name = name;
+            this.sprite = sprite;
+            this.damage = damage;
+            this.move = move;
+            this.speed = speed;
+            this.bulletCost = bulletCost;
+        }
     }
     var players = [];
 
@@ -418,22 +422,18 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         renderEntities(terra);
-        // Render the players if the game isn't over
         players.forEach((player) => {
-            if (!isGameOver) {
-                renderEntity(player.scoreBar1);
-                renderEntity(player.scoreBar2);
-            }
+            renderEntity(player.scoreBar1);
+            renderEntity(player.scoreBar2);
+
         });
         players.forEach((player) => {
-            if (!isGameOver) {
-                if (player.direction == 'left') player.pos[0] += player.sprite.size[0];
-                renderEntity(player);
-                if (player.direction == 'left') player.pos[0] -= player.sprite.size[0];
-                renderEntity(player.healthBar);
-                renderEntity(player.ammoBar);
-                renderEntity(player.weaponBar);
-            }
+            if (player.direction == 'left') player.pos[0] += player.sprite.size[0];
+            renderEntity(player);
+            if (player.direction == 'left') player.pos[0] -= player.sprite.size[0];
+            renderEntity(player.healthBar);
+            renderEntity(player.ammoBar);
+            renderEntity(player.weaponBar);
         });
         renderEntities(bullets);
         renderEntities(explosions);
@@ -455,24 +455,4 @@
         ctx.restore();
     }
 
-    // Game over
-    function gameOver() {
-        document.querySelector('.pause').style.display = 'block';
-        document.querySelector('.pause-overlay').style.display = 'block';
-        isGameOver = true;
-    }
-
-    // Reset game to original state
-    function reset() {
-        // document.querySelector('.pause').style.display = 'none';
-        // document.querySelector('.pause-overlay').style.display = 'none';
-        // isGameOver = false;
-        // gameTime = 0;
-        // score = 0;
-
-        // enemies = [];
-        // bullets = [];
-
-        // players.pos = [50, canvas.height / 2];
-    };
 })();
