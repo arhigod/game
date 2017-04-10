@@ -240,7 +240,7 @@
             [0.9, -0.1],
             [0.8, -0.2]
         ], new Sprite('img/weapons.png', [70, 70], [33, 15])),
-        new Weapon('rpg', 40, 600, 12, [
+        new Weapon('rpg', 50, 600, 12, [
             [1, 0]
         ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
     ];
@@ -258,22 +258,17 @@
     let weaponSpawnSpeed = 2000;
     let lastWeaponSpawnTime = Date.now();
 
-    var gameTime = 0;
-    var isGameOver;
     var isPause = false;
     var terrainPattern;
 
     // Speed in pixels per second
     var playerSpeed = 200;
     var bulletSpeed = 500;
-    var enemySpeed = 100;
 
     players.push(new Player(0, { up: 's', left: 'z', right: 'c', shoot: 'SHIFT' }, 'img/player3.png'));
     players.push(new Player(1, { up: 'k', left: 'm', right: '.', shoot: '/' }, 'img/player2.png'));
     // Update game objects
     function update(dt) {
-        gameTime += dt;
-
         handleInput(dt);
         updateEntities(dt);
 
@@ -301,7 +296,6 @@
     }
 
     function updateEntities(dt) {
-
         // Update all the bullets
         bullets.forEach((bullet, i) => {
             bullet.update(dt);
@@ -454,5 +448,4 @@
         entity.sprite.render(ctx);
         ctx.restore();
     }
-
 })();
