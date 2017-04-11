@@ -538,6 +538,7 @@ footer {
     width: 100%;
     min-width: 800px;
     height: 150px;
+    cursor: default;
 }
 
 footer .copyright {
