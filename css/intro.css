@@ -280,6 +280,7 @@ h2 {
     height: 628px;
     margin: 0 auto;
     background: #000;
+    cursor: default;
 }
 
 .game_layout > div {
