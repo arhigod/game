@@ -12,7 +12,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #151515;
+    background-color: black;
 }
 
 canvas {
@@ -26,6 +26,7 @@ canvas {
     height: 40px;
     margin: 8px auto;
     text-align: center;
+    cursor: default;
 }
 
 .instructions {
@@ -134,15 +135,6 @@ canvas {
     margin-bottom: 11px;
     border: 2px solid #f74d01;
 }
-/*.changeskin > li:first-child:hover {
-    margin: 0;
-}
-.changeskin > li:first-child {
-    margin: 0;
-}
-.changeskin > li:first-child.selected {
-    margin:0;
-}*/
 
 .changeskin > li > span {
     display: block;
@@ -160,4 +152,18 @@ canvas {
 
 .changeskin > li > span.type3 {
     background-image: url(./../img/player3mini.png);
+}
+
+.sound {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 1%;
+    right: 20%;
+    background: url(./../img/soundtrue.png);
+    cursor: pointer;
+}
+
+.sound:hover {
+    border: 1px solid green;
 }

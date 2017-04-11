@@ -104,6 +104,11 @@
             isPause = false;
         });
 
+        document.querySelector('.sound').addEventListener('click', function() {
+            isSound = !isSound;
+            this.style.background = 'url(./img/sound'+isSound+'.png)';
+        });
+
         [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) => e.addEventListener('click', function() {
             [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), item => item.classList.remove('selected'));
             e.classList.add('selected');
@@ -185,8 +190,10 @@
             }
         }
         actionShoot() {
-            var audio = new Audio('./sound/'+this.weapon.name+this.id+'.mp3');
-            audio.play();
+            if (isSound) {
+                var audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
+                audio.play();
+            }
             let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];
             this.weapon.move.forEach(move => {
                 let moveDirection = [this.direction == 'right' ? move[0] : -1 * move[0], move[1]];
@@ -261,12 +268,13 @@
     let lastWeaponSpawnTime = Date.now();
 
     var isPause = false;
+    var isSound = true;
     var terrainPattern;
 
     // Speed in pixels per second
     var playerSpeed = 200;
     var bulletSpeed = 500;
-    
+
 
     players.push(new Player(0, { up: 's', left: 'z', right: 'c', shoot: 'SHIFT' }, 'img/player3.png'));
     players.push(new Player(1, { up: 'k', left: 'm', right: '.', shoot: '/' }, 'img/player2.png'));
