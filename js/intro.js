@@ -76,4 +76,6 @@ jQuery(document).ready(function() {
         wrap: 'both',
         scroll: 1
     });
+    $(".fancybox").fancybox();
 });
+

@@ -36,6 +36,10 @@ body {
     min-height: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 body {
     height: 4106px;
     margin: 0;
@@ -279,8 +283,8 @@ h2 {
     width: 942px;
     height: 628px;
     margin: 0 auto;
-    background: #000;
     cursor: default;
+    background: #000;
 }
 
 .game_layout > div {
@@ -499,6 +503,10 @@ h2 {
 .jcarousel li {
     width: 300px;
     height: 180px;
+}
+
+.jcarousel a:focus {
+    outline: none;
 }
 
 
