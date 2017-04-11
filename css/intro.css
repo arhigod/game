@@ -31,9 +31,8 @@
 
 /*  Page  */
 
-html,
-body {
-    min-height: 100%;
+html {
+    height: 4106px;
 }
 
 ::-webkit-scrollbar {
@@ -41,9 +40,10 @@ body {
 }
 
 body {
-    height: 4106px;
+    min-height: 100%;
     margin: 0;
     background: #000 url(./../img/bg.jpg) center top no-repeat;
+    position: relative;
 }
 
 h1 {
@@ -70,6 +70,7 @@ h2 {
     min-width: 1000px;
     height: 100%;
     margin: 0 auto;
+    padding-bottom: 100px;
 }
 
 .content {
@@ -542,11 +543,13 @@ h2 {
 /* Footer */
 
 footer {
-    line-height: 0;
     width: 100%;
     min-width: 800px;
-    height: 150px;
+    height: 100px;
     cursor: default;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 footer .copyright {
