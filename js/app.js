@@ -276,8 +276,8 @@
     var bulletSpeed = 500;
 
 
-    players.push(new Player(0, { up: 's', left: 'z', right: 'c', shoot: 'SHIFT' }, 'img/player3.png'));
-    players.push(new Player(1, { up: 'k', left: 'm', right: '.', shoot: '/' }, 'img/player2.png'));
+    players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
+    players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
     // Update game objects
     function update(dt) {
         handleInput(dt);
