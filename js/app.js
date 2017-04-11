@@ -1,10 +1,6 @@
 // A cross-browser requestAnimationFrame
 // See https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/
 (function() {
-    // const Player = require('./Player');
-    // const Bullet = require('./Bullet');
-    // const Weapon = require('./Weapon');
-
     let map = [
         '############################################################',
         '#..........................................................#',
@@ -259,11 +255,6 @@
     let weapons = [];
     let respawnPos = [];
     let weaponPos = [];
-    let weaponSprite = [
-        new Sprite('img/weapons.png', [35, 0], [33, 15]),
-        new Sprite('img/weapons.png', [70, 70], [33, 15]),
-        new Sprite('img/weapons.png', [152, 21], [51, 17]),
-    ];
     let weaponSpawnSpeed = 2000;
     let lastWeaponSpawnTime = Date.now();
 
