@@ -1,5 +1,3 @@
-const Sprite = require('./sprite');
-
 class Weapon {
     constructor(name, damage, speed, bulletCost, move, sprite) {
         this.name = name;

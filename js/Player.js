@@ -1,5 +1,4 @@
 const Sprite = require('./sprite');
-const Weapon = require('./Weapon');
 const settings = require('./settings');
 const game = require('./game');
 const Bullet = require('./Bullet');
@@ -8,7 +7,7 @@ class Player {
     constructor(id, controls, skin) {
         this.id = id;
         this.controls = controls;
-        this.skin = skin;
+        this.skin = skin || 'img/player1.png';
         this.sprite = new Sprite(this.skin, [57, 62], [31, 38]);
         this.pos = this.id === 0 ? [0, 0] : [2000, 0];
         this.direction = this.id === 0 ? 'right' : 'left';
