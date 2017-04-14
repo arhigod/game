@@ -148,8 +148,38 @@ module.exports = Weapon;
 const Sprite = __webpack_require__(0);
 const Weapon = __webpack_require__(1);
 
-
-let players = [];
+let map = [
+    '############################################################',
+    '#..........................................................#',
+    '#.............W..............................W.............#',
+    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
+    '#...0....................0........0....................0...#',
+    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
+    '#..........................................................#',
+    '#.......0............0................0............0.......#',
+    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
+    '#..........................................................#',
+    '#0..........................0..0..........................0#',
+    '#XXX..........W...........XXX..XXX..........W...........XXX#',
+    '#............XXXX..........................XXXX............#',
+    '#0..........................0..0..........................0#',
+    '#..........................................................#',
+    '#..........................................................#',
+    '#..........................................................#',
+    '#.............W..............................W.............#',
+    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
+    '#...0....................0........0....................0...#',
+    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
+    '#..........................................................#',
+    '#.......0............0................0............0.......#',
+    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
+    '#..........................................................#',
+    '#0..........................0..0..........................0#',
+    '#XXX..........W...........XXX..XXX..........W...........XXX#',
+    '#............XXXX..........................XXXX............#',
+    '#0..........................0..0..........................0#',
+    '############################################################',
+];
 
 let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
     [1, 0]
@@ -169,20 +199,11 @@ let weaponPack = [
         [1, 0]
     ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
 ];
-let bullets = [];
-let explosions = [];
 let terra = [];
-let weapons = [];
 let respawnPos = [];
 let weaponPos = [];
 let weaponSpawnSpeed = 2000;
-let lastWeaponSpawnTime = Date.now();
 
-let isPause = false;
-let isSound = true;
-let terrainPattern;
-
-// Speed in pixels per second
 let playerSpeed = 200;
 let bulletSpeed = 500;
 
@@ -198,7 +219,32 @@ function boxCollides(pos, size, pos2, size2) {
         pos2[0] + size2[0], pos2[1] + size2[1]);
 }
 
-module.exports = { boxCollides,players, defaultWeapon, weaponPack, bullets, explosions, terra, weapons, respawnPos, weaponPos, weaponSpawnSpeed, lastWeaponSpawnTime, isPause, isSound, terrainPattern, playerSpeed, bulletSpeed };
+for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+        if (map[i][j] == '#') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite('img/spritesheetmini.jpg', [40, 0], [20, 20])
+            })
+        }
+        if (map[i][j] == 'X') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite('img/spritesheetmini.jpg', [0, 0], [20, 20])
+            })
+        }
+        if (map[i][j] == '0') {
+            respawnPos.push([]);
+            respawnPos[respawnPos.length - 1] = [j * 20, i * 20 - 25];
+        }
+        if (map[i][j] == 'W') {
+            weaponPos.push([]);
+            weaponPos[weaponPos.length - 1] = [j * 20, i * 20];
+        }
+    }
+}
+
+module.exports = { map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
 
 
 /***/ }),
@@ -232,6 +278,7 @@ module.exports = Bullet;
 const Sprite = __webpack_require__(0);
 const Weapon = __webpack_require__(1);
 const settings = __webpack_require__(2);
+const game = __webpack_require__(8);
 const Bullet = __webpack_require__(3);
 
 class Player {
@@ -285,14 +332,14 @@ class Player {
         }
     }
     actionShoot() {
-        if (settings.isSound) {
+        if (game.isSound) {
             var audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
             audio.play();
         }
         let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];
         this.weapon.move.forEach(move => {
             let moveDirection = [this.direction == 'right' ? move[0] : -1 * move[0], move[1]];
-            settings.bullets.push(new Bullet(this.id, [x, y], this.direction, moveDirection, new Sprite('img/sprites.png', [0, 39], [18, 8]), this.weapon.damage));
+            game.bullets.push(new Bullet(this.id, [x, y], this.direction, moveDirection, new Sprite('img/sprites.png', [0, 39], [18, 8]), this.weapon.damage));
         });
         this.lastFire = Date.now();
         this.bullets -= this.weapon.bulletCost;
@@ -454,39 +501,7 @@ module.exports = resources = {
     const Bullet = __webpack_require__(3);
     const Weapon = __webpack_require__(1);
     const settings = __webpack_require__(2);
-
-    let map = [
-        '############################################################',
-        '#..........................................................#',
-        '#.............W..............................W.............#',
-        '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
-        '#...0....................0........0....................0...#',
-        '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
-        '#..........................................................#',
-        '#.......0............0................0............0.......#',
-        '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
-        '#..........................................................#',
-        '#0..........................0..0..........................0#',
-        '#XXX..........W...........XXX..XXX..........W...........XXX#',
-        '#............XXXX..........................XXXX............#',
-        '#0..........................0..0..........................0#',
-        '#..........................................................#',
-        '#..........................................................#',
-        '#..........................................................#',
-        '#.............W..............................W.............#',
-        '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
-        '#...0....................0........0....................0...#',
-        '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
-        '#..........................................................#',
-        '#.......0............0................0............0.......#',
-        '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
-        '#..........................................................#',
-        '#0..........................0..0..........................0#',
-        '#XXX..........W...........XXX..XXX..........W...........XXX#',
-        '#............XXXX..........................XXXX............#',
-        '#0..........................0..0..........................0#',
-        '############################################################',
-    ];
+    const game = __webpack_require__(8);
 
     var requestAnimFrame = (function() {
         return window.requestAnimationFrame ||
@@ -513,7 +528,7 @@ module.exports = resources = {
         var now = Date.now();
         var dt = (now - lastTime) / 1000.0;
 
-        if (!settings.isPause) {
+        if (!game.isPause) {
             spawnWeapon();
             update(dt);
             render();
@@ -523,51 +538,27 @@ module.exports = resources = {
     };
 
     function init() {
-        settings.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
-        for (let i = 0; i < map.length; i++) {
-            for (let j = 0; j < map[i].length; j++) {
-                if (map[i][j] == '#') {
-                    settings.terra.push({
-                        pos: [j * 20, i * 20],
-                        sprite: new Sprite('img/spritesheetmini.jpg', [40, 0], [20, 20])
-                    })
-                }
-                if (map[i][j] == 'X') {
-                    settings.terra.push({
-                        pos: [j * 20, i * 20],
-                        sprite: new Sprite('img/spritesheetmini.jpg', [0, 0], [20, 20])
-                    })
-                }
-                if (map[i][j] == '0') {
-                    settings.respawnPos.push([]);
-                    settings.respawnPos[settings.respawnPos.length - 1] = [j * 20, i * 20 - 25];
-                }
-                if (map[i][j] == 'W') {
-                    settings.weaponPos.push([]);
-                    settings.weaponPos[settings.weaponPos.length - 1] = [j * 20, i * 20];
-                }
-            }
-        }
+        game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
         document.querySelector('.play-again').addEventListener('click', function() {
             document.querySelector('.pause').style.display = 'none';
             document.querySelector('.pause-overlay').style.display = 'none';
-            settings.isPause = false;
+            game.isPause = false;
         });
 
         document.querySelector('.sound').addEventListener('click', function() {
-            settings.isSound = !settings.isSound;
-            this.style.background = 'url(./img/sound' + settings.isSound + '.png)';
+            game.isSound = !game.isSound;
+            this.style.background = 'url(./img/sound' + game.isSound + '.png)';
         });
 
         [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) => e.addEventListener('click', function() {
             [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), item => item.classList.remove('selected'));
             e.classList.add('selected');
-            settings.players[0].changeskin('img/player' + (i + 1) + '.png');
+            game.players[0].changeskin('img/player' + (i + 1) + '.png');
         }));
         [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), (e, i) => e.addEventListener('click', function() {
             [].forEach.call(document.querySelectorAll('.changeskin.player2 li'), item => item.classList.remove('selected'));
             e.classList.add('selected');
-            settings.players[1].changeskin('img/player' + (i + 1) + '.png');
+            game.players[1].changeskin('img/player' + (i + 1) + '.png');
         }));
 
         lastTime = Date.now();
@@ -588,8 +579,8 @@ module.exports = resources = {
     ]);
     resources.onReady(init);
 
-    settings.players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
-    settings.players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
+    game.players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
+    game.players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
 
     // Update game objects
     function update(dt) {
@@ -600,39 +591,39 @@ module.exports = resources = {
     };
 
     function spawnWeapon() {
-        if (Date.now() - settings.lastWeaponSpawnTime > settings.weaponSpawnSpeed) {
+        if (Date.now() - game.lastWeaponSpawnTime > settings.weaponSpawnSpeed) {
             let weapon = {};
             weapon.id = Math.floor(Math.random() * settings.weaponPack.length);
             weapon.sprite = settings.weaponPack[weapon.id].sprite;
             weapon.pos = settings.weaponPos[Math.floor(Math.random() * settings.weaponPos.length)];
-            settings.weapons.push(weapon);
-            settings.lastWeaponSpawnTime = Date.now();
+            game.weapons.push(weapon);
+            game.lastWeaponSpawnTime = Date.now();
         }
     }
 
     function handleInput(dt) {
-        settings.players.forEach(player => player.actions(dt));
+        game.players.forEach(player => player.actions(dt));
         if (input.isDown('esc')) {
-            settings.isPause = true;
+            game.isPause = true;
             document.querySelector('.pause').style.display = 'block';
             document.querySelector('.pause-overlay').style.display = 'block';
         }
     }
 
     function updateEntities(dt) {
-        // Update all the settings.bullets
-        settings.bullets.forEach((bullet, i) => {
+        // Update all the game.bullets
+        game.bullets.forEach((bullet, i) => {
             bullet.update(dt);
-            if (bullet.pos[0] < 0 || bullet.pos[0] > canvas.width) settings.bullets.splice(i, 1);
+            if (bullet.pos[0] < 0 || bullet.pos[0] > canvas.width) game.bullets.splice(i, 1);
         });
 
-        // Update the settings.players sprite animation
-        settings.players.forEach((player) => {
+        // Update the game.players sprite animation
+        game.players.forEach((player) => {
             player.sprite.update(dt);
             player.ammoBar.pos = [player.pos[0], player.pos[1] - 10];
             player.weaponBar.pos = [player.pos[0] + 23, player.pos[1] - 12];
 
-            //settings.players jump and falling
+            //game.players jump and falling
             if (player.jumpCount > 0) {
                 player.jumpCount--;
                 player.pos[1] -= settings.playerSpeed * 2 * dt;
@@ -652,10 +643,10 @@ module.exports = resources = {
             }
         });
 
-        // Update all the settings.explosions
-        settings.explosions.forEach((expl, i) => {
+        // Update all the game.explosions
+        game.explosions.forEach((expl, i) => {
             expl.sprite.update(dt);
-            if (expl.sprite.done) settings.explosions.splice(i, 1);
+            if (expl.sprite.done) game.explosions.splice(i, 1);
         });
     }
 
@@ -663,26 +654,26 @@ module.exports = resources = {
     function checkCollisions() {
         checkPlayerBounds();
 
-        for (let i = 0; i < settings.weapons.length - 1; i++) {
-            for (let j = i + 1; j < settings.weapons.length; j++) {
-                if (settings.boxCollides(settings.weapons[i].pos, settings.weapons[i].sprite.size, settings.weapons[j].pos, settings.weapons[j].sprite.size)) {
-                    settings.weapons.splice(j, 1);
+        for (let i = 0; i < game.weapons.length - 1; i++) {
+            for (let j = i + 1; j < game.weapons.length; j++) {
+                if (settings.boxCollides(game.weapons[i].pos, game.weapons[i].sprite.size, game.weapons[j].pos, game.weapons[j].sprite.size)) {
+                    game.weapons.splice(j, 1);
                     j--;
                 }
             }
         }
 
-        settings.players.forEach(player => {
-            settings.bullets.forEach((bullet, i) => {
+        game.players.forEach(player => {
+            game.bullets.forEach((bullet, i) => {
                 if (player.id != bullet.id && settings.boxCollides(bullet.pos, bullet.sprite.size, player.pos, player.sprite.size)) {
-                    settings.bullets.splice(i, 1);
+                    game.bullets.splice(i, 1);
                     player.health = player.health - bullet.damage;
                     player.healthBar = { sprite: new Sprite('img/hp.png', [0, player.health * 4], [40, 4]), pos: player.pos };
                     if (player.health <= 0) {
-                        settings.players[bullet.id].score++;
-                        settings.players[bullet.id].scoreBar1.sprite = new Sprite('img/numbers.png', [50 + (60 * (settings.players[bullet.id].score / 10 | 0)), 50], [60, 90], [60, 130]);
-                        settings.players[bullet.id].scoreBar2.sprite = new Sprite('img/numbers.png', [50 + (60 * (settings.players[bullet.id].score % 10)), 50], [60, 90], [60, 130]);
-                        settings.explosions.push({
+                        game.players[bullet.id].score++;
+                        game.players[bullet.id].scoreBar1.sprite = new Sprite('img/numbers.png', [50 + (60 * (game.players[bullet.id].score / 10 | 0)), 50], [60, 90], [60, 130]);
+                        game.players[bullet.id].scoreBar2.sprite = new Sprite('img/numbers.png', [50 + (60 * (game.players[bullet.id].score % 10)), 50], [60, 90], [60, 130]);
+                        game.explosions.push({
                             pos: player.pos,
                             sprite: new Sprite('img/sprites.png', [0, 117], [39, 39], 16, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], null, true)
                         });
@@ -692,9 +683,9 @@ module.exports = resources = {
                     }
                 }
             });
-            settings.weapons.forEach((weapon, i) => {
+            game.weapons.forEach((weapon, i) => {
                 if (settings.boxCollides(weapon.pos, weapon.sprite.size, player.pos, player.sprite.size)) {
-                    settings.weapons.splice(i, 1);
+                    game.weapons.splice(i, 1);
                     player.weapon = settings.weaponPack[weapon.id];
                     player.weaponBar.sprite = player.weapon.sprite;
                     player.bullets = 100;
@@ -706,7 +697,7 @@ module.exports = resources = {
 
     function checkPlayerBounds() {
         // Check bounds
-        settings.players.forEach((player) => {
+        game.players.forEach((player) => {
             if (player.pos[0] < 20) {
                 player.pos[0] = 20;
             } else if (player.pos[0] > canvas.width - player.sprite.size[0] - 21) {
@@ -723,16 +714,16 @@ module.exports = resources = {
 
     // Draw everything
     function render() {
-        ctx.fillStyle = settings.terrainPattern;
+        ctx.fillStyle = game.terrainPattern;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         renderEntities(settings.terra);
-        settings.players.forEach((player) => {
+        game.players.forEach((player) => {
             renderEntity(player.scoreBar1);
             renderEntity(player.scoreBar2);
 
         });
-        settings.players.forEach((player) => {
+        game.players.forEach((player) => {
             if (player.direction == 'left') player.pos[0] += player.sprite.size[0];
             renderEntity(player);
             if (player.direction == 'left') player.pos[0] -= player.sprite.size[0];
@@ -740,9 +731,9 @@ module.exports = resources = {
             renderEntity(player.ammoBar);
             renderEntity(player.weaponBar);
         });
-        renderEntities(settings.bullets);
-        renderEntities(settings.explosions);
-        renderEntities(settings.weapons);
+        renderEntities(game.bullets);
+        renderEntities(game.explosions);
+        renderEntities(game.weapons);
     };
 
     function renderEntities(list) {
@@ -760,6 +751,27 @@ module.exports = resources = {
         ctx.restore();
     }
 })();
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Sprite = __webpack_require__(0);
+const Weapon = __webpack_require__(1);
+
+let players = [];
+
+let bullets = [];
+let explosions = [];
+let weapons = [];
+let lastWeaponSpawnTime = Date.now();
+
+let isPause = false;
+let isSound = true;
+let terrainPattern;
+
+module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, terrainPattern };
 
 
 /***/ })

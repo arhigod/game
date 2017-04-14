@@ -1,8 +1,38 @@
 const Sprite = require('./sprite');
 const Weapon = require('./Weapon');
 
-
-let players = [];
+let map = [
+    '############################################################',
+    '#..........................................................#',
+    '#.............W..............................W.............#',
+    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
+    '#...0....................0........0....................0...#',
+    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
+    '#..........................................................#',
+    '#.......0............0................0............0.......#',
+    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
+    '#..........................................................#',
+    '#0..........................0..0..........................0#',
+    '#XXX..........W...........XXX..XXX..........W...........XXX#',
+    '#............XXXX..........................XXXX............#',
+    '#0..........................0..0..........................0#',
+    '#..........................................................#',
+    '#..........................................................#',
+    '#..........................................................#',
+    '#.............W..............................W.............#',
+    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
+    '#...0....................0........0....................0...#',
+    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
+    '#..........................................................#',
+    '#.......0............0................0............0.......#',
+    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
+    '#..........................................................#',
+    '#0..........................0..0..........................0#',
+    '#XXX..........W...........XXX..XXX..........W...........XXX#',
+    '#............XXXX..........................XXXX............#',
+    '#0..........................0..0..........................0#',
+    '############################################################',
+];
 
 let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
     [1, 0]
@@ -22,20 +52,11 @@ let weaponPack = [
         [1, 0]
     ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
 ];
-let bullets = [];
-let explosions = [];
 let terra = [];
-let weapons = [];
 let respawnPos = [];
 let weaponPos = [];
 let weaponSpawnSpeed = 2000;
-let lastWeaponSpawnTime = Date.now();
 
-let isPause = false;
-let isSound = true;
-let terrainPattern;
-
-// Speed in pixels per second
 let playerSpeed = 200;
 let bulletSpeed = 500;
 
@@ -51,4 +72,29 @@ function boxCollides(pos, size, pos2, size2) {
         pos2[0] + size2[0], pos2[1] + size2[1]);
 }
 
-module.exports = { boxCollides,players, defaultWeapon, weaponPack, bullets, explosions, terra, weapons, respawnPos, weaponPos, weaponSpawnSpeed, lastWeaponSpawnTime, isPause, isSound, terrainPattern, playerSpeed, bulletSpeed };
+for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+        if (map[i][j] == '#') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite('img/spritesheetmini.jpg', [40, 0], [20, 20])
+            })
+        }
+        if (map[i][j] == 'X') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite('img/spritesheetmini.jpg', [0, 0], [20, 20])
+            })
+        }
+        if (map[i][j] == '0') {
+            respawnPos.push([]);
+            respawnPos[respawnPos.length - 1] = [j * 20, i * 20 - 25];
+        }
+        if (map[i][j] == 'W') {
+            weaponPos.push([]);
+            weaponPos[weaponPos.length - 1] = [j * 20, i * 20];
+        }
+    }
+}
+
+module.exports = { map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };

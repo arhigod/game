@@ -1,6 +1,7 @@
 const Sprite = require('./sprite');
 const Weapon = require('./Weapon');
 const settings = require('./settings');
+const game = require('./game');
 const Bullet = require('./Bullet');
 
 class Player {
@@ -54,14 +55,14 @@ class Player {
         }
     }
     actionShoot() {
-        if (settings.isSound) {
+        if (game.isSound) {
             var audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
             audio.play();
         }
         let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];
         this.weapon.move.forEach(move => {
             let moveDirection = [this.direction == 'right' ? move[0] : -1 * move[0], move[1]];
-            settings.bullets.push(new Bullet(this.id, [x, y], this.direction, moveDirection, new Sprite('img/sprites.png', [0, 39], [18, 8]), this.weapon.damage));
+            game.bullets.push(new Bullet(this.id, [x, y], this.direction, moveDirection, new Sprite('img/sprites.png', [0, 39], [18, 8]), this.weapon.damage));
         });
         this.lastFire = Date.now();
         this.bullets -= this.weapon.bulletCost;
