@@ -40,6 +40,8 @@ function main() {
 };
 
 function init() {
+	settings.music.play();
+
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
         document.querySelector('.pause').style.display = 'none';
@@ -50,6 +52,12 @@ function init() {
     document.querySelector('.sound').addEventListener('click', function() {
         game.isSound = !game.isSound;
         this.style.background = 'url(./img/sound' + game.isSound + '.png)';
+    });
+
+    document.querySelector('.music').addEventListener('click', function() {
+        game.isMusic = !game.isMusic;
+        this.style.background = 'url(./img/music' + game.isMusic + '.png)';
+        game.isMusic ? settings.music.play() : settings.music.pause();
     });
 
     [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) => e.addEventListener('click', function() {

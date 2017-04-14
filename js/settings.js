@@ -59,6 +59,8 @@ let weaponSpawnSpeed = 2000;
 
 let playerSpeed = 200;
 let bulletSpeed = 500;
+let music = new Audio('./sound/sound.mp3');
+music.loop = true;
 
 function collides(x, y, r, b, x2, y2, r2, b2) {
     return !(r <= x2 || x > r2 ||
@@ -97,4 +99,4 @@ for (let i = 0; i < map.length; i++) {
     }
 }
 
-module.exports = { map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };

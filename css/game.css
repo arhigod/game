@@ -168,3 +168,17 @@ canvas {
 .sound:hover {
     border: 1px solid green;
 }
+
+.music {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 1%;
+    right: 15%;
+    background: url(./../img/musictrue.png);
+    cursor: pointer;
+}
+
+.music:hover {
+    border: 1px solid green;
+}

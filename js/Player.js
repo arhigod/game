@@ -55,7 +55,8 @@ class Player {
     }
     actionShoot() {
         if (game.isSound) {
-            var audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
+            let audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
+            audio.volume = 0.3;
             audio.play();
         }
         let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];

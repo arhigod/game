@@ -123,28 +123,10 @@ module.exports = Sprite;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-class Weapon {
-    constructor(name, damage, speed, bulletCost, move, sprite) {
-        this.name = name;
-        this.sprite = sprite;
-        this.damage = damage;
-        this.move = move;
-        this.speed = speed;
-        this.bulletCost = bulletCost;
-    }
-}
-
-module.exports = Weapon;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const Sprite = __webpack_require__(0);
-const Weapon = __webpack_require__(1);
+const Weapon = __webpack_require__(3);
 
 let map = [
     '############################################################',
@@ -204,6 +186,8 @@ let weaponSpawnSpeed = 2000;
 
 let playerSpeed = 200;
 let bulletSpeed = 500;
+let music = new Audio('./sound/sound.mp3');
+music.loop = true;
 
 function collides(x, y, r, b, x2, y2, r2, b2) {
     return !(r <= x2 || x > r2 ||
@@ -242,39 +226,15 @@ for (let i = 0; i < map.length; i++) {
     }
 }
 
-module.exports = { map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const settings = __webpack_require__(2);
-
-class Bullet {
-    constructor(id, pos, dir, moveDirection, sprite, damage) {
-        this.id = id;
-        this.pos = pos;
-        this.direction = dir;
-        this.moveDirection = moveDirection;
-        this.sprite = sprite;
-        this.damage = damage;
-    }
-    update(dt) {
-        this.pos[0] += (settings.bulletSpeed * dt) * this.moveDirection[0];
-        this.pos[1] += (settings.bulletSpeed * dt) * this.moveDirection[1];
-    }
-}
-
-module.exports = Bullet;
-
-
-/***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const Sprite = __webpack_require__(0);
-const Weapon = __webpack_require__(1);
+const Weapon = __webpack_require__(3);
 
 let players = [];
 
@@ -285,19 +245,38 @@ let lastWeaponSpawnTime = Date.now();
 
 let isPause = false;
 let isSound = true;
+let isMusic = true;
 let terrainPattern;
 
-module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, terrainPattern };
+module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, isMusic, terrainPattern };
 
 
 /***/ }),
-/* 5 */
+/* 3 */
+/***/ (function(module, exports) {
+
+class Weapon {
+    constructor(name, damage, speed, bulletCost, move, sprite) {
+        this.name = name;
+        this.sprite = sprite;
+        this.damage = damage;
+        this.move = move;
+        this.speed = speed;
+        this.bulletCost = bulletCost;
+    }
+}
+
+module.exports = Weapon;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const Sprite = __webpack_require__(0);
-const settings = __webpack_require__(2);
-const game = __webpack_require__(4);
-const Bullet = __webpack_require__(3);
+const settings = __webpack_require__(1);
+const game = __webpack_require__(2);
+const Bullet = __webpack_require__(7);
 
 class Player {
     constructor(id, controls, skin) {
@@ -351,7 +330,8 @@ class Player {
     }
     actionShoot() {
         if (game.isSound) {
-            var audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
+            let audio = new Audio('./sound/' + this.weapon.name + this.id + '.mp3');
+            audio.volume = 0.3;
             audio.play();
         }
         let [x, y] = [this.pos[0] + this.sprite.size[0] / 2, this.pos[1] + this.sprite.size[1] / 2 - 8];
@@ -374,7 +354,7 @@ module.exports = Player;
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var pressedKeys = {};
@@ -442,7 +422,7 @@ module.exports = input = {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 var resourceCache = {};
@@ -505,15 +485,39 @@ module.exports = resources = {
 
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const settings = __webpack_require__(1);
+
+class Bullet {
+    constructor(id, pos, dir, moveDirection, sprite, damage) {
+        this.id = id;
+        this.pos = pos;
+        this.direction = dir;
+        this.moveDirection = moveDirection;
+        this.sprite = sprite;
+        this.damage = damage;
+    }
+    update(dt) {
+        this.pos[0] += (settings.bulletSpeed * dt) * this.moveDirection[0];
+        this.pos[1] += (settings.bulletSpeed * dt) * this.moveDirection[1];
+    }
+}
+
+module.exports = Bullet;
+
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const resources = __webpack_require__(7);
+const resources = __webpack_require__(6);
 const Sprite = __webpack_require__(0);
-const input = __webpack_require__(6);
-const Player = __webpack_require__(5);
-const settings = __webpack_require__(2);
-const game = __webpack_require__(4);
+const input = __webpack_require__(5);
+const Player = __webpack_require__(4);
+const settings = __webpack_require__(1);
+const game = __webpack_require__(2);
 
 var requestAnimFrame = (function() {
     return window.requestAnimationFrame ||
@@ -550,6 +554,8 @@ function main() {
 };
 
 function init() {
+	settings.music.play();
+
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
         document.querySelector('.pause').style.display = 'none';
@@ -560,6 +566,12 @@ function init() {
     document.querySelector('.sound').addEventListener('click', function() {
         game.isSound = !game.isSound;
         this.style.background = 'url(./img/sound' + game.isSound + '.png)';
+    });
+
+    document.querySelector('.music').addEventListener('click', function() {
+        game.isMusic = !game.isMusic;
+        this.style.background = 'url(./img/music' + game.isMusic + '.png)';
+        game.isMusic ? settings.music.play() : settings.music.pause();
     });
 
     [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) => e.addEventListener('click', function() {
