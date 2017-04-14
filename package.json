@@ -1,0 +1,22 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Test my good game =)\r https://arhigod.github.io/game/index.html",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arhigod/game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arhigod/game/issues"
+  },
+  "homepage": "https://github.com/arhigod/game#readme",
+  "dependencies": {
+    "webpack": "^2.3.3"
+  }
+}
