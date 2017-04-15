@@ -38,7 +38,7 @@
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 207px; left: 377px; top: 420px;" data-block-id="8746626b7d56e8fd722db4e70746efd4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
 <p><em>@arhigod</em></p>
-</div></div></section></section><section class="stack" data-id="8cf1fc2d4fa42d776c591b5b3863c5eb"><section data-id="09bdaf06b0e013607b41460063064cdb"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 448px; height: 543px; left: 220px; top: 57px;" data-block-id="fef135d17979d85b94a3065d3bd88942"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="629" data-natural-height="762" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702875/Diagram.png"></div></div></section><section data-id="1666087c380943fee79e3c623f32dcfc"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="2fe024b615cef6068a1e1e729db7b770"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+</div></div></section></section><section class="stack" data-id="8cf1fc2d4fa42d776c591b5b3863c5eb"><section data-id="09bdaf06b0e013607b41460063064cdb"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 530px; height: 599px; left: 190px; top: 41px;" data-block-id="fef135d17979d85b94a3065d3bd88942"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="648" data-natural-height="732" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3704268/Diagram.png"></div></div></section><section data-id="1666087c380943fee79e3c623f32dcfc"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="2fe024b615cef6068a1e1e729db7b770"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
 <h1>sprite.js</h1>
 </div></div>
 <div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 960px; height: 469px; left: 0px; top: 161px;" data-block-id="1815bb413ab410ae2d7b87d22a6b9e5f"><div class="sl-block-content" style="z-index: 12;"><pre class="javascript"><code>class Sprite {
@@ -120,82 +120,63 @@ let isPause = false;
 let isSound = true;
 let terrainPattern;
 
-module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, terrainPattern };</code></pre></div></div></section><section data-id="3c0558103c4b791244b4055c9f883051"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="64f741e1128fc8f1c3a08c2f074e51df"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, terrainPattern };</code></pre></div></div></section><section data-id="2dfe4e50c62da2aab3c20535463d5398"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="a3056c15d2409ad102174e45cb5d361e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>config.json</h1>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 960px; height: 469px; left: 0px; top: 161px;" data-block-id="58fc40b613c20a9fc36f31f2e237788f"><div class="sl-block-content" style="z-index: 11;"><pre class="javascript"><code>{
+  "map" : [
+    "############################################################",
+    "#..........................................................#",
+    "#.............W..............................W.............#",
+    "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
+    "#...0....................0........0....................0...#",
+    "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
+    "#..........................................................#",
+    "#.......0............0................0............0.......#",
+    "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
+    "#..........................................................#",
+    "#0..........................0..0..........................0#",
+    "#XXX..........W...........XXX..XXX..........W...........XXX#",
+    "#............XXXX..........................XXXX............#",
+    "#0..........................0..0..........................0#",
+    "#..........................................................#",
+    "#..........................................................#",
+    "#..........................................................#",
+    "#.............W..............................W.............#",
+    "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
+    "#...0....................0........0....................0...#",
+    "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
+    "#..........................................................#",
+    "#.......0............0................0............0.......#",
+    "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
+    "#..........................................................#",
+    "#0..........................0..0..........................0#",
+    "#XXX..........W...........XXX..XXX..........W...........XXX#",
+    "#............XXXX..........................XXXX............#",
+    "#0..........................0..0..........................0#",
+    "############################################################"
+],
+  "weaponSpawnSpeed" : 2000,
+  "playerSpeed" : 200,
+  "bulletSpeed" : 500,
+  "music" : "./sound/sound.mp3"
+}</code></pre></div></div></section><section data-id="3c0558103c4b791244b4055c9f883051"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="64f741e1128fc8f1c3a08c2f074e51df"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>settings.js</h1>
 </div></div>
 <div class="sl-block" data-block-type="code" style="width: 960px; height: 468px; left: 0px; top: 162px;" data-block-id="4fdb32341d77a7564f1bd40f0b83fb6a"><div class="sl-block-content" style="z-index: 11;"><pre class="javascript"><code>const Sprite = require('./sprite');
 const Weapon = require('./Weapon');
+const config = JSON.parse(JSON.stringify(require('./config.json')));
 
-let map = [
-    '############################################################',
-    '#..........................................................#',
-    '#.............W..............................W.............#',
-    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
-    '#...0....................0........0....................0...#',
-    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
-    '#..........................................................#',
-    '#.......0............0................0............0.......#',
-    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
-    '#..........................................................#',
-    '#0..........................0..0..........................0#',
-    '#XXX..........W...........XXX..XXX..........W...........XXX#',
-    '#............XXXX..........................XXXX............#',
-    '#0..........................0..0..........................0#',
-    '#..........................................................#',
-    '#..........................................................#',
-    '#..........................................................#',
-    '#.............W..............................W.............#',
-    '#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#',
-    '#...0....................0........0....................0...#',
-    '#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#',
-    '#..........................................................#',
-    '#.......0............0................0............0.......#',
-    '#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#',
-    '#..........................................................#',
-    '#0..........................0..0..........................0#',
-    '#XXX..........W...........XXX..XXX..........W...........XXX#',
-    '#............XXXX..........................XXXX............#',
-    '#0..........................0..0..........................0#',
-    '############################################################',
-];
+let map = config.map;
+let weaponSpawnSpeed = config.weaponSpawnSpeed;
+let playerSpeed = config.playerSpeed;
+let bulletSpeed = config.bulletSpeed;
+let music = new Audio(config.music);
+music.loop = true;
 
-let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
-    [1, 0]
-], new Sprite('img/weapons.png', [0, 0], [33, 15]));
-let weaponPack = [
-    new Weapon('ak47', 5, 100, 3, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [35, 0], [33, 15])),
-    new Weapon('shotgun', 10, 400, 10, [
-        [0.8, 0.2],
-        [0.9, 0.1],
-        [1, 0],
-        [0.9, -0.1],
-        [0.8, -0.2]
-    ], new Sprite('img/weapons.png', [70, 70], [33, 15])),
-    new Weapon('rpg', 50, 600, 12, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
-];
 let terra = [];
 let respawnPos = [];
 let weaponPos = [];
-let weaponSpawnSpeed = 2000;
-
-let playerSpeed = 200;
-let bulletSpeed = 500;
-
-function collides(x, y, r, b, x2, y2, r2, b2) {
-    return !(r &lt;= x2 || x &gt; r2 ||
-        b &lt;= y2 || y &gt; b2);
-}
-
-function boxCollides(pos, size, pos2, size2) {
-    return collides(pos[0], pos[1],
-        pos[0] + size[0], pos[1] + size[1],
-        pos2[0], pos2[1],
-        pos2[0] + size2[0], pos2[1] + size2[1]);
-}
 
 for (let i = 0; i &lt; map.length; i++) {
     for (let j = 0; j &lt; map[i].length; j++) {
@@ -222,7 +203,39 @@ for (let i = 0; i &lt; map.length; i++) {
     }
 }
 
-module.exports = { map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
+    [1, 0]
+], new Sprite('img/weapons.png', [0, 0], [33, 15]));
+let weaponPack = [
+    new Weapon('ak47', 5, 100, 3, [
+        [1, 0]
+    ], new Sprite('img/weapons.png', [35, 0], [33, 15])),
+    new Weapon('shotgun', 10, 400, 10, [
+        [0.8, 0.2],
+        [0.9, 0.1],
+        [1, 0],
+        [0.9, -0.1],
+        [0.8, -0.2]
+    ], new Sprite('img/weapons.png', [70, 70], [33, 15])),
+    new Weapon('rpg', 50, 600, 12, [
+        [1, 0]
+    ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
+];
+
+function collides(x, y, r, b, x2, y2, r2, b2) {
+    return !(r &lt;= x2 || x &gt; r2 ||
+        b &lt;= y2 || y &gt; b2);
+}
+
+function boxCollides(pos, size, pos2, size2) {
+    return collides(pos[0], pos[1],
+        pos[0] + size[0], pos[1] + size[1],
+        pos2[0], pos2[1],
+        pos2[0] + size2[0], pos2[1] + size2[1]);
+}
+
+module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+
 </code></pre></div></div></section><section data-id="190f68e65ad69d17734e84846b574b0c"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="187bf4885c855a84465f575e168a3dc8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>Bullet.js</h1>
 </div></div>
@@ -491,6 +504,8 @@ function main() {
 };
 
 function init() {
+	settings.music.play();
+
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
         document.querySelector('.pause').style.display = 'none';
@@ -501,6 +516,12 @@ function init() {
     document.querySelector('.sound').addEventListener('click', function() {
         game.isSound = !game.isSound;
         this.style.background = 'url(./img/sound' + game.isSound + '.png)';
+    });
+
+    document.querySelector('.music').addEventListener('click', function() {
+        game.isMusic = !game.isMusic;
+        this.style.background = 'url(./img/music' + game.isMusic + '.png)';
+        game.isMusic ? settings.music.play() : settings.music.pause();
     });
 
     [].forEach.call(document.querySelectorAll('.changeskin.player1 li'), (e, i) =&gt; e.addEventListener('click', function() {
@@ -702,7 +723,8 @@ function renderEntity(entity) {
 
     entity.sprite.render(ctx);
     ctx.restore();
-}</code></pre></div></div></div></section></section><section class="stack" data-id="9da60b2ce91bc52ade859c7386132479"><section data-id="bf3bf7291a2dcdc6553120389d7a60fd"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="dee6980e1864433e659ea91e76a41712"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702883/gameplay5.png"></div></div></section><section data-id="45567975e2bff49d1b77b6ff62346be9"><div class="sl-block" data-block-type="image" style="width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="e19905ec7091c355e303e32223c38ad1"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702885/gameplay4.png"></div></div></section><section data-id="9cec64045f733fb1466eb7af08da626d"><div class="sl-block" data-block-type="image" style="width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="c5538304912bc30750a2e70d9eff095a"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702888/gameplay3.png"></div></div></section></section><section data-id="ab267d8c17f6c153e936a366fd38d1ed"><div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-id="5019afa8f6152b252b8e603873b4dbfc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+}
+</code></pre></div></div></div></section></section><section class="stack" data-id="9da60b2ce91bc52ade859c7386132479"><section data-id="bf3bf7291a2dcdc6553120389d7a60fd"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="dee6980e1864433e659ea91e76a41712"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702883/gameplay5.png"></div></div></section><section data-id="45567975e2bff49d1b77b6ff62346be9"><div class="sl-block" data-block-type="image" style="width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="e19905ec7091c355e303e32223c38ad1"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702885/gameplay4.png"></div></div></section><section data-id="9cec64045f733fb1466eb7af08da626d"><div class="sl-block" data-block-type="image" style="width: 960px; height: 540px; left: 0px; top: 47px;" data-block-id="c5538304912bc30750a2e70d9eff095a"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="1366" data-natural-height="768" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702888/gameplay3.png"></div></div></section></section><section data-id="ab267d8c17f6c153e936a366fd38d1ed"><div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-id="5019afa8f6152b252b8e603873b4dbfc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span><a href="https://arhigod.github.io/game/index.html" target="_blank">https://arhigod.github.io/game/index.html</a></span></p>
 </div></div></section>
 			</div>
@@ -711,7 +733,7 @@ function renderEntity(entity) {
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":2,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492170473135,"font_typekit":null,"font_google":null,"notes":{}}};
+	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":3,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492246020619,"font_typekit":null,"font_google":null,"notes":{}}};
 </script>
 
 		<script>
