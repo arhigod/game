@@ -189,10 +189,7 @@ module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, re
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Sprite = __webpack_require__(0);
-const Weapon = __webpack_require__(3);
+/***/ (function(module, exports) {
 
 let players = [];
 

@@ -1,6 +1,3 @@
-const Sprite = require('./sprite');
-const Weapon = require('./Weapon');
-
 let players = [];
 
 let bullets = [];
