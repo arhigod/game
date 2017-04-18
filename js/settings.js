@@ -1,6 +1,6 @@
 const Sprite = require('./sprite');
 const Weapon = require('./Weapon');
-const config = JSON.parse(JSON.stringify(require('./config.json')));
+const config = require('./config.json');
 
 let map = config.map;
 let weaponSpawnSpeed = config.weaponSpawnSpeed;

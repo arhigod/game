@@ -127,7 +127,7 @@ module.exports = Sprite;
 
 const Sprite = __webpack_require__(0);
 const Weapon = __webpack_require__(3);
-const config = JSON.parse(JSON.stringify(__webpack_require__(9)));
+const config = __webpack_require__(9);
 
 let map = config.map;
 let weaponSpawnSpeed = config.weaponSpawnSpeed;
