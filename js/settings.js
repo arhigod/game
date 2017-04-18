@@ -18,13 +18,13 @@ for (let i = 0; i < map.length; i++) {
         if (map[i][j] == '#') {
             terra.push({
                 pos: [j * 20, i * 20],
-                sprite: new Sprite('img/spritesheetmini.jpg', [40, 0], [20, 20])
+                sprite: new Sprite(config.terra.block.file, config.terra.block.pos, config.terra.block.size)
             })
         }
         if (map[i][j] == 'X') {
             terra.push({
                 pos: [j * 20, i * 20],
-                sprite: new Sprite('img/spritesheetmini.jpg', [0, 0], [20, 20])
+                sprite: new Sprite(config.terra.ground.file, config.terra.ground.pos, config.terra.ground.size)
             })
         }
         if (map[i][j] == '0') {
@@ -38,24 +38,12 @@ for (let i = 0; i < map.length; i++) {
     }
 }
 
-let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
-    [1, 0]
-], new Sprite('img/weapons.png', [0, 0], [33, 15]));
-let weaponPack = [
-    new Weapon('ak47', 5, 100, 3, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [35, 0], [33, 15])),
-    new Weapon('shotgun', 10, 400, 10, [
-        [0.8, 0.2],
-        [0.9, 0.1],
-        [1, 0],
-        [0.9, -0.1],
-        [0.8, -0.2]
-    ], new Sprite('img/weapons.png', [70, 70], [33, 15])),
-    new Weapon('rpg', 50, 600, 12, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
-];
+let defaultWeapon = new Weapon(config.defaultWeapon.name, config.defaultWeapon.damage, config.defaultWeapon.speed, config.defaultWeapon.bulletCost, config.defaultWeapon.move, new Sprite(config.defaultWeapon.sprite.file, config.defaultWeapon.sprite.pos, config.defaultWeapon.sprite.size));
+
+let weaponPack = [];
+for (let i = 0; i < config.weaponPack.length; i++) {
+    weaponPack.push(new Weapon(config.weaponPack[i].name, config.weaponPack[i].damage, config.weaponPack[i].speed, config.weaponPack[i].bulletCost, config.weaponPack[i].move, new Sprite(config.weaponPack[i].sprite.file, config.weaponPack[i].sprite.pos, config.weaponPack[i].sprite.size)));
+}
 
 function collides(x, y, r, b, x2, y2, r2, b2) {
     return !(r <= x2 || x > r2 ||
