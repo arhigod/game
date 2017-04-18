@@ -27,12 +27,11 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-id="476bd3750279b680d99db1e136801dde"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 183px; height: auto;" data-block-id="b2e2cd235d716914fea974a4193f8b8e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; border-width: 1px;">
-<h1>Game of War</h1>
-</div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 464px;" data-block-id="ca79d6a88d978535e0a4a0eabc8041f9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+				<section data-id="476bd3750279b680d99db1e136801dde"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 183px; height: auto;" data-block-id="b2e2cd235d716914fea974a4193f8b8e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12; border-width: 1px;" dir="ui"><h1>Game of War</h1></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 464px;" data-block-id="ca79d6a88d978535e0a4a0eabc8041f9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
 <p><span><a href="https://arhigod.github.io/game/index.html" target="_blank">https://arhigod.github.io/game/index.html</a></span></p>
-</div></div></section><section class="stack" data-id="c6d2f653c8e9cc25343b470ba923f7b6"><section data-id="0636049a71b32de8653e9f86272df596"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 346px; left: 300px; top: 140px;" data-block-id="49af3e3200dc2f90ae34ac2acf43067c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="283" data-natural-height="272" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702739/logo.png"></div></div></section><section data-id="e4c22ccc3d2989c6ffbeec06ed420e17"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 210px; height: 210px; left: 375px; top: 180px;" data-block-id="76b13fee0c6877566e4e447e391f4529"><div class="sl-block-content" style="z-index: 11; border-style: solid; border-width: 1px; border-radius: 200px;"><img data-natural-width="413" data-natural-height="413" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702748/photoeditorsdk-export.png"></div></div>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 360px; left: 600px; top: 45px;" data-block-id="f462fbe44a92e543f856155434466cf7"><div class="sl-block-style" style="z-index: 10; opacity: 0.36;"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="204" data-natural-height="204" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3708845/logobig.jpg"></div></div></div></section><section class="stack" data-id="c6d2f653c8e9cc25343b470ba923f7b6"><section data-id="0636049a71b32de8653e9f86272df596"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 346px; left: 300px; top: 140px;" data-block-id="49af3e3200dc2f90ae34ac2acf43067c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="283" data-natural-height="272" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702739/logo.png"></div></div></section><section data-id="e4c22ccc3d2989c6ffbeec06ed420e17"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 210px; height: 210px; left: 375px; top: 180px;" data-block-id="76b13fee0c6877566e4e447e391f4529"><div class="sl-block-content" style="z-index: 11; border-style: solid; border-width: 1px; border-radius: 200px;"><img data-natural-width="413" data-natural-height="413" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/672906/images/3702748/photoeditorsdk-export.png"></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 381px; left: 290px; top: 108px;" data-block-id="e2328f265c3f5553f01f955c0bcaa8ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
 <p>main programmer</p>
 </div></div>
@@ -124,48 +123,91 @@ module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, i
 <h1>config.json</h1>
 </div></div>
 <div class="sl-block" data-block-type="code" style="width: 960px; height: 469px; left: 0px; top: 161px;" data-block-id="58fc40b613c20a9fc36f31f2e237788f"><div class="sl-block-content" style="z-index: 11;"><pre class="javascript"><code>{
-  "map" : [
-    "############################################################",
-    "#..........................................................#",
-    "#.............W..............................W.............#",
-    "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
-    "#...0....................0........0....................0...#",
-    "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
-    "#..........................................................#",
-    "#.......0............0................0............0.......#",
-    "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
-    "#..........................................................#",
-    "#0..........................0..0..........................0#",
-    "#XXX..........W...........XXX..XXX..........W...........XXX#",
-    "#............XXXX..........................XXXX............#",
-    "#0..........................0..0..........................0#",
-    "#..........................................................#",
-    "#..........................................................#",
-    "#..........................................................#",
-    "#.............W..............................W.............#",
-    "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
-    "#...0....................0........0....................0...#",
-    "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
-    "#..........................................................#",
-    "#.......0............0................0............0.......#",
-    "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
-    "#..........................................................#",
-    "#0..........................0..0..........................0#",
-    "#XXX..........W...........XXX..XXX..........W...........XXX#",
-    "#............XXXX..........................XXXX............#",
-    "#0..........................0..0..........................0#",
-    "############################################################"
-],
-  "weaponSpawnSpeed" : 2000,
-  "playerSpeed" : 200,
-  "bulletSpeed" : 500,
-  "music" : "./sound/sound.mp3"
+    "map": [
+        "############################################################",
+        "#..........................................................#",
+        "#.............W..............................W.............#",
+        "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
+        "#...0....................0........0....................0...#",
+        "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
+        "#..........................................................#",
+        "#.......0............0................0............0.......#",
+        "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
+        "#..........................................................#",
+        "#0..........................0..0..........................0#",
+        "#XXX..........W...........XXX..XXX..........W...........XXX#",
+        "#............XXXX..........................XXXX............#",
+        "#0..........................0..0..........................0#",
+        "#..........................................................#",
+        "#..........................................................#",
+        "#..........................................................#",
+        "#.............W..............................W.............#",
+        "#.......XXXXXXXXXXXXXX................XXXXXXXXXXXXXX.......#",
+        "#...0....................0........0....................0...#",
+        "#..XXXXXX............XXXXXXX....XXXXXXX............XXXXXX..#",
+        "#..........................................................#",
+        "#.......0............0................0............0.......#",
+        "#.....XXXXXX......XXXXXX............XXXXXX......XXXXXX.....#",
+        "#..........................................................#",
+        "#0..........................0..0..........................0#",
+        "#XXX..........W...........XXX..XXX..........W...........XXX#",
+        "#............XXXX..........................XXXX............#",
+        "#0..........................0..0..........................0#",
+        "############################################################"
+    ],
+    "weaponSpawnSpeed": 2000,
+    "playerSpeed": 200,
+    "bulletSpeed": 500,
+    "music": "./sound/sound.mp3",
+    "defaultWeapon": {
+        "name": "pistol",
+        "damage": 10,
+        "speed": 300,
+        "bulletCost": 0,
+        "move": [
+            [1, 0]
+        ],
+        "sprite": { "file": "img/weapons.png", "pos": [0, 0], "size": [33, 15] }
+    },
+    "weaponPack": [{
+        "name": "ak47",
+        "damage": 5,
+        "speed": 100,
+        "bulletCost": 3,
+        "move": [
+            [1, 0]
+        ],
+        "sprite": { "file": "img/weapons.png", "pos": [35, 0], "size": [33, 15] }
+    }, {
+        "name": "shotgun",
+        "damage": 10,
+        "speed": 400,
+        "bulletCost": 10,
+        "move": [
+            [0.8, 0.2],
+            [0.9, 0.1],
+            [1, 0],
+            [0.9, -0.1],
+            [0.8, -0.2]
+        ],
+        "sprite": { "file": "img/weapons.png", "pos": [70, 70], "size": [33, 15] }
+    }, {
+        "name": "rpg",
+        "damage": 50,
+        "speed": 600,
+        "bulletCost": 12,
+        "move": [
+            [1, 0]
+        ],
+        "sprite": { "file": "img/weapons.png", "pos": [152, 21], "size": [51, 17] }
+    }],
+    "terra": { "block": { "file": "img/spritesheetmini.jpg", "pos": [40, 0], "size": [20, 20] }, "ground": { "file": "img/spritesheetmini.jpg", "pos": [0, 0], "size": [20, 20] } }
 }</code></pre></div></div></section><section data-id="3c0558103c4b791244b4055c9f883051"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="64f741e1128fc8f1c3a08c2f074e51df"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>settings.js</h1>
 </div></div>
 <div class="sl-block" data-block-type="code" style="width: 960px; height: 468px; left: 0px; top: 162px;" data-block-id="4fdb32341d77a7564f1bd40f0b83fb6a"><div class="sl-block-content" style="z-index: 11;"><pre class="javascript"><code>const Sprite = require('./sprite');
 const Weapon = require('./Weapon');
-const config = JSON.parse(JSON.stringify(require('./config.json')));
+const config = require('./config.json');
 
 let map = config.map;
 let weaponSpawnSpeed = config.weaponSpawnSpeed;
@@ -183,13 +225,13 @@ for (let i = 0; i &lt; map.length; i++) {
         if (map[i][j] == '#') {
             terra.push({
                 pos: [j * 20, i * 20],
-                sprite: new Sprite('img/spritesheetmini.jpg', [40, 0], [20, 20])
+                sprite: new Sprite(config.terra.block.file, config.terra.block.pos, config.terra.block.size)
             })
         }
         if (map[i][j] == 'X') {
             terra.push({
                 pos: [j * 20, i * 20],
-                sprite: new Sprite('img/spritesheetmini.jpg', [0, 0], [20, 20])
+                sprite: new Sprite(config.terra.ground.file, config.terra.ground.pos, config.terra.ground.size)
             })
         }
         if (map[i][j] == '0') {
@@ -203,24 +245,12 @@ for (let i = 0; i &lt; map.length; i++) {
     }
 }
 
-let defaultWeapon = new Weapon('pistol', 10, 300, 0, [
-    [1, 0]
-], new Sprite('img/weapons.png', [0, 0], [33, 15]));
-let weaponPack = [
-    new Weapon('ak47', 5, 100, 3, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [35, 0], [33, 15])),
-    new Weapon('shotgun', 10, 400, 10, [
-        [0.8, 0.2],
-        [0.9, 0.1],
-        [1, 0],
-        [0.9, -0.1],
-        [0.8, -0.2]
-    ], new Sprite('img/weapons.png', [70, 70], [33, 15])),
-    new Weapon('rpg', 50, 600, 12, [
-        [1, 0]
-    ], new Sprite('img/weapons.png', [152, 21], [51, 17]))
-];
+let defaultWeapon = new Weapon(config.defaultWeapon.name, config.defaultWeapon.damage, config.defaultWeapon.speed, config.defaultWeapon.bulletCost, config.defaultWeapon.move, new Sprite(config.defaultWeapon.sprite.file, config.defaultWeapon.sprite.pos, config.defaultWeapon.sprite.size));
+
+let weaponPack = [];
+for (let i = 0; i &lt; config.weaponPack.length; i++) {
+    weaponPack.push(new Weapon(config.weaponPack[i].name, config.weaponPack[i].damage, config.weaponPack[i].speed, config.weaponPack[i].bulletCost, config.weaponPack[i].move, new Sprite(config.weaponPack[i].sprite.file, config.weaponPack[i].sprite.pos, config.weaponPack[i].sprite.size)));
+}
 
 function collides(x, y, r, b, x2, y2, r2, b2) {
     return !(r &lt;= x2 || x &gt; r2 ||
@@ -235,7 +265,6 @@ function boxCollides(pos, size, pos2, size2) {
 }
 
 module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
-
 </code></pre></div></div></section><section data-id="190f68e65ad69d17734e84846b574b0c"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="187bf4885c855a84465f575e168a3dc8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>Bullet.js</h1>
 </div></div>
@@ -733,7 +762,7 @@ function renderEntity(entity) {
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":3,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492246020619,"font_typekit":null,"font_google":null,"notes":{}}};
+	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":3,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492504333613,"font_typekit":null,"font_google":null,"notes":{}}};
 </script>
 
 		<script>
