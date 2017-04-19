@@ -156,6 +156,8 @@ module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, i
     "playerSpeed": 200,
     "bulletSpeed": 500,
     "music": "./sound/sound.mp3",
+    "playerSettings": [{"controls":{ "up": "w", "left": "a", "right": "d", "shoot": "t" }, "skin": "img/player3.png"},
+                        {"controls":{ "up": "up", "left": "left", "right": "right", "shoot": "." }, "skin": "img/player2.png"}],
     "defaultWeapon": {
         "name": "pistol",
         "damage": 10,
@@ -210,6 +212,7 @@ let map = config.map;
 let weaponSpawnSpeed = config.weaponSpawnSpeed;
 let playerSpeed = config.playerSpeed;
 let bulletSpeed = config.bulletSpeed;
+let playerSettings = config.playerSettings;
 let music = new Audio(config.music);
 music.loop = true;
 
@@ -261,7 +264,7 @@ function boxCollides(pos, size, pos2, size2) {
         pos2[0] + size2[0], pos2[1] + size2[1]);
 }
 
-module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+module.exports = { playerSettings, music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
 </code></pre></div></div></section><section data-id="190f68e65ad69d17734e84846b574b0c"><div class="sl-block" data-block-type="text" style="width: 601px; left: 180px; top: 43px; height: auto;" data-block-id="187bf4885c855a84465f575e168a3dc8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1>Bullet.js</h1>
 </div></div>
@@ -579,8 +582,7 @@ resources.load([
 ]);
 resources.onReady(init);
 
-game.players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
-game.players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
+settings.playerSettings.forEach((x, i) =&gt; game.players.push(new Player(i, x.controls, x.skin)));
 
 // Update game objects
 function update(dt) {
@@ -759,7 +761,7 @@ function renderEntity(entity) {
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":3,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492509680811,"font_typekit":null,"font_google":null,"notes":{}}};
+	var SLConfig = {"current_user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"editor_grid":true,"editor_snap":true,"developer_mode":false,"speaker_layout":null,"phone_number":null,"phone_country_code":null},"email":"arhigodg@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"manually_upgraded":false,"deck_user_editor_limit":1},"deck":{"id":979681,"slug":"gow","title":"Game of War","description":"","width":960,"height":700,"visibility":"all","published_at":"2017-04-14T09:14:29.845Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/64c035b5ce885e8fa7e55d9cc4e3a51b/thumb.jpg","view_count":3,"user":{"id":672906,"username":"arhigodarseniy","name":"ARHIGOD Arseniy","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-b1pwheqKXwY/AAAAAAAAAAI/AAAAAAAAADw/-OonTrUIplA/photo.jpg?sz=50","paid":false,"pro":false,"lite":false,"team_id":null,"settings":{"id":521815,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"default","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"deck_user_editor_limit":1,"data_updated_at":1492577433130,"font_typekit":null,"font_google":null,"notes":{}}};
 </script>
 
 		<script>
