@@ -42,9 +42,7 @@ for (let i = 0; i < map.length; i++) {
 let defaultWeapon = new Weapon(config.defaultWeapon.name, config.defaultWeapon.damage, config.defaultWeapon.speed, config.defaultWeapon.bulletCost, config.defaultWeapon.move, new Sprite(config.defaultWeapon.sprite.file, config.defaultWeapon.sprite.pos, config.defaultWeapon.sprite.size));
 
 let weaponPack = [];
-for (let i = 0; i < config.weaponPack.length; i++) {
-    weaponPack.push(new Weapon(config.weaponPack[i].name, config.weaponPack[i].damage, config.weaponPack[i].speed, config.weaponPack[i].bulletCost, config.weaponPack[i].move, new Sprite(config.weaponPack[i].sprite.file, config.weaponPack[i].sprite.pos, config.weaponPack[i].sprite.size)));
-}
+config.weaponPack.forEach(w=>weaponPack.push(new Weapon(w.name, w.damage, w.speed, w.bulletCost, w.move, new Sprite(w.sprite.file, w.sprite.pos, w.sprite.size))));
 
 function collides(x, y, r, b, x2, y2, r2, b2) {
     return !(r <= x2 || x > r2 ||
