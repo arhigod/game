@@ -45,6 +45,8 @@
         ],
         "sprite": { "file": "img/weapons.png", "pos": [0, 0], "size": [33, 15] }
     },
+    "playerSettings": [{"controls":{ "up": "w", "left": "a", "right": "d", "shoot": "t" }, "skin": "img/player3.png"},
+                        {"controls":{ "up": "up", "left": "left", "right": "right", "shoot": "." }, "skin": "img/player2.png"}],
     "weaponPack": [{
         "name": "ak47",
         "damage": 5,

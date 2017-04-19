@@ -68,6 +68,73 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Sprite = __webpack_require__(1);
+const Weapon = __webpack_require__(7);
+const config = __webpack_require__(9);
+
+let map = config.map;
+let weaponSpawnSpeed = config.weaponSpawnSpeed;
+let playerSpeed = config.playerSpeed;
+let bulletSpeed = config.bulletSpeed;
+let playerSettings = config.playerSettings;
+let music = new Audio(config.music);
+music.loop = true;
+
+let terra = [];
+let respawnPos = [];
+let weaponPos = [];
+
+for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+        if (map[i][j] == '#') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite(config.terra.block.file, config.terra.block.pos, config.terra.block.size)
+            })
+        }
+        if (map[i][j] == 'X') {
+            terra.push({
+                pos: [j * 20, i * 20],
+                sprite: new Sprite(config.terra.ground.file, config.terra.ground.pos, config.terra.ground.size)
+            })
+        }
+        if (map[i][j] == '0') {
+            respawnPos.push([]);
+            respawnPos[respawnPos.length - 1] = [j * 20, i * 20 - 25];
+        }
+        if (map[i][j] == 'W') {
+            weaponPos.push([]);
+            weaponPos[weaponPos.length - 1] = [j * 20, i * 20];
+        }
+    }
+}
+
+let defaultWeapon = new Weapon(config.defaultWeapon.name, config.defaultWeapon.damage, config.defaultWeapon.speed, config.defaultWeapon.bulletCost, config.defaultWeapon.move, new Sprite(config.defaultWeapon.sprite.file, config.defaultWeapon.sprite.pos, config.defaultWeapon.sprite.size));
+
+let weaponPack = [];
+for (let i = 0; i < config.weaponPack.length; i++) {
+    weaponPack.push(new Weapon(config.weaponPack[i].name, config.weaponPack[i].damage, config.weaponPack[i].speed, config.weaponPack[i].bulletCost, config.weaponPack[i].move, new Sprite(config.weaponPack[i].sprite.file, config.weaponPack[i].sprite.pos, config.weaponPack[i].sprite.size)));
+}
+
+function collides(x, y, r, b, x2, y2, r2, b2) {
+    return !(r <= x2 || x > r2 ||
+        b <= y2 || y > b2);
+}
+
+function boxCollides(pos, size, pos2, size2) {
+    return collides(pos[0], pos[1],
+        pos[0] + size[0], pos[1] + size[1],
+        pos2[0], pos2[1],
+        pos2[0] + size2[0], pos2[1] + size2[1]);
+}
+
+module.exports = { playerSettings, music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 class Sprite {
@@ -122,72 +189,6 @@ module.exports = Sprite;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Sprite = __webpack_require__(0);
-const Weapon = __webpack_require__(3);
-const config = __webpack_require__(9);
-
-let map = config.map;
-let weaponSpawnSpeed = config.weaponSpawnSpeed;
-let playerSpeed = config.playerSpeed;
-let bulletSpeed = config.bulletSpeed;
-let music = new Audio(config.music);
-music.loop = true;
-
-let terra = [];
-let respawnPos = [];
-let weaponPos = [];
-
-for (let i = 0; i < map.length; i++) {
-    for (let j = 0; j < map[i].length; j++) {
-        if (map[i][j] == '#') {
-            terra.push({
-                pos: [j * 20, i * 20],
-                sprite: new Sprite(config.terra.block.file, config.terra.block.pos, config.terra.block.size)
-            })
-        }
-        if (map[i][j] == 'X') {
-            terra.push({
-                pos: [j * 20, i * 20],
-                sprite: new Sprite(config.terra.ground.file, config.terra.ground.pos, config.terra.ground.size)
-            })
-        }
-        if (map[i][j] == '0') {
-            respawnPos.push([]);
-            respawnPos[respawnPos.length - 1] = [j * 20, i * 20 - 25];
-        }
-        if (map[i][j] == 'W') {
-            weaponPos.push([]);
-            weaponPos[weaponPos.length - 1] = [j * 20, i * 20];
-        }
-    }
-}
-
-let defaultWeapon = new Weapon(config.defaultWeapon.name, config.defaultWeapon.damage, config.defaultWeapon.speed, config.defaultWeapon.bulletCost, config.defaultWeapon.move, new Sprite(config.defaultWeapon.sprite.file, config.defaultWeapon.sprite.pos, config.defaultWeapon.sprite.size));
-
-let weaponPack = [];
-for (let i = 0; i < config.weaponPack.length; i++) {
-    weaponPack.push(new Weapon(config.weaponPack[i].name, config.weaponPack[i].damage, config.weaponPack[i].speed, config.weaponPack[i].bulletCost, config.weaponPack[i].move, new Sprite(config.weaponPack[i].sprite.file, config.weaponPack[i].sprite.pos, config.weaponPack[i].sprite.size)));
-}
-
-function collides(x, y, r, b, x2, y2, r2, b2) {
-    return !(r <= x2 || x > r2 ||
-        b <= y2 || y > b2);
-}
-
-function boxCollides(pos, size, pos2, size2) {
-    return collides(pos[0], pos[1],
-        pos[0] + size[0], pos[1] + size[1],
-        pos2[0], pos2[1],
-        pos2[0] + size2[0], pos2[1] + size2[1]);
-}
-
-module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
@@ -208,30 +209,12 @@ module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, i
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-class Weapon {
-    constructor(name, damage, speed, bulletCost, move, sprite) {
-        this.name = name;
-        this.sprite = sprite;
-        this.damage = damage;
-        this.move = move;
-        this.speed = speed;
-        this.bulletCost = bulletCost;
-    }
-}
-
-module.exports = Weapon;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Sprite = __webpack_require__(0);
-const settings = __webpack_require__(1);
+const Sprite = __webpack_require__(1);
+const settings = __webpack_require__(0);
 const game = __webpack_require__(2);
-const Bullet = __webpack_require__(7);
+const Bullet = __webpack_require__(6);
 
 class Player {
     constructor(id, controls, skin) {
@@ -309,7 +292,7 @@ module.exports = Player;
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports) {
 
 var pressedKeys = {};
@@ -377,7 +360,7 @@ module.exports = input = {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var resourceCache = {};
@@ -440,10 +423,10 @@ module.exports = resources = {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const settings = __webpack_require__(1);
+const settings = __webpack_require__(0);
 
 class Bullet {
     constructor(id, pos, dir, moveDirection, sprite, damage) {
@@ -464,14 +447,32 @@ module.exports = Bullet;
 
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+class Weapon {
+    constructor(name, damage, speed, bulletCost, move, sprite) {
+        this.name = name;
+        this.sprite = sprite;
+        this.damage = damage;
+        this.move = move;
+        this.speed = speed;
+        this.bulletCost = bulletCost;
+    }
+}
+
+module.exports = Weapon;
+
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const resources = __webpack_require__(6);
-const Sprite = __webpack_require__(0);
-const input = __webpack_require__(5);
-const Player = __webpack_require__(4);
-const settings = __webpack_require__(1);
+const resources = __webpack_require__(5);
+const Sprite = __webpack_require__(1);
+const input = __webpack_require__(4);
+const Player = __webpack_require__(3);
+const settings = __webpack_require__(0);
 const game = __webpack_require__(2);
 
 var requestAnimFrame = (function() {
@@ -509,7 +510,7 @@ function main() {
 };
 
 function init() {
-	settings.music.play();
+    settings.music.play();
 
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
@@ -558,8 +559,7 @@ resources.load([
 ]);
 resources.onReady(init);
 
-game.players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
-game.players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
+settings.playerSettings.forEach((x, i) => game.players.push(new Player(i, x.controls, x.skin)));
 
 // Update game objects
 function update(dt) {
@@ -795,6 +795,26 @@ module.exports = {
 			]
 		}
 	},
+	"playerSettings": [
+		{
+			"controls": {
+				"up": "w",
+				"left": "a",
+				"right": "d",
+				"shoot": "t"
+			},
+			"skin": "img/player3.png"
+		},
+		{
+			"controls": {
+				"up": "up",
+				"left": "left",
+				"right": "right",
+				"shoot": "."
+			},
+			"skin": "img/player2.png"
+		}
+	],
 	"weaponPack": [
 		{
 			"name": "ak47",

@@ -40,7 +40,7 @@ function main() {
 };
 
 function init() {
-	settings.music.play();
+    settings.music.play();
 
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
@@ -89,8 +89,7 @@ resources.load([
 ]);
 resources.onReady(init);
 
-game.players.push(new Player(0, { up: 'w', left: 'a', right: 'd', shoot: 't' }, 'img/player3.png'));
-game.players.push(new Player(1, { up: 'up', left: 'left', right: 'right', shoot: '.' }, 'img/player2.png'));
+settings.playerSettings.forEach((x, i) => game.players.push(new Player(i, x.controls, x.skin)));
 
 // Update game objects
 function update(dt) {

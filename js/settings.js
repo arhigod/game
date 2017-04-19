@@ -6,6 +6,7 @@ let map = config.map;
 let weaponSpawnSpeed = config.weaponSpawnSpeed;
 let playerSpeed = config.playerSpeed;
 let bulletSpeed = config.bulletSpeed;
+let playerSettings = config.playerSettings;
 let music = new Audio(config.music);
 music.loop = true;
 
@@ -57,4 +58,4 @@ function boxCollides(pos, size, pos2, size2) {
         pos2[0] + size2[0], pos2[1] + size2[1]);
 }
 
-module.exports = { music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
+module.exports = { playerSettings, music, map, boxCollides, defaultWeapon, weaponPack, terra, respawnPos, weaponPos, weaponSpawnSpeed, playerSpeed, bulletSpeed };
