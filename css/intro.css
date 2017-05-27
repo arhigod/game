@@ -30,7 +30,7 @@
 
 body::after{
     position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-    content:url(./../img/btn-hover.png) url(./../img/cthover.png) url(./../img/007hover.png) url(./../img/thover.png) url(./../img/pistol.png) url(./../img/ak47.png) url(./../img/shotgun.png) url(./../img/rpg.png);
+    content:url(./../img/btn-hover.png) url(./../img/cthover.png) url(./../img/007hover.png) url(./../img/thover.png) url(./../img/pistol.png) url(./../img/ak47.png) url(./../img/shotgun.png) url(./../img/rpg.png) url(./../img/classes_close.png) url(./../img/arr.png);
 }
 
 /*  Page  */

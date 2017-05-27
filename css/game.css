@@ -8,6 +8,11 @@
     src: url(../fonts/btn.ttf);
 }
 
+body::after{
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+    content:url(./../img/buttons.png) url(./../img/player1mini.png) url(./../img/player2mini.png) url(./../img/player3mini.png) url(./../img/soundfalse.png) url(./../img/musicfalse.png);
+}
+
 html,
 body {
     margin: 0;
