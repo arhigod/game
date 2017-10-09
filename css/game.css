@@ -180,7 +180,7 @@ canvas {
     height: 30px;
     top: 1%;
     right: 15%;
-    background: url(./../img/musictrue.png);
+    background: url(./../img/musicfalse.png);
     cursor: pointer;
 }
 
