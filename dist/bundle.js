@@ -199,7 +199,7 @@ let lastWeaponSpawnTime = Date.now();
 
 let isPause = false;
 let isSound = true;
-let isMusic = true;
+let isMusic = false;
 let terrainPattern;
 
 module.exports = { players, bullets, explosions, weapons, lastWeaponSpawnTime, isPause, isSound, isMusic, terrainPattern };
@@ -508,7 +508,7 @@ function main() {
 };
 
 function init() {
-    settings.music.play();
+    //settings.music.play();
 
     game.terrainPattern = ctx.createPattern(resources.get('img/background.jpg'), 'repeat');
     document.querySelector('.play-again').addEventListener('click', function() {
