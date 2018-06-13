@@ -42,7 +42,7 @@ $(document).ready(function() {
 $(document).on('click', '.menu > li', function() {
     var pagePos = [$('.weapons').offset().top - 55, $('.game').offset().top - 55, $('.classes').offset().top - 55, $('.media').offset().top - 55];
     var curIndex = $('.menu > li').index(this);
-    $('body').scrollTo(pagePos[curIndex], 800, { queue: true });
+    $('body').scrollTo(pagePos[curIndex], 800, { queue: false });
 });
 
 
