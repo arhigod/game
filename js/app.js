@@ -1,3 +1,5 @@
+console.log("%c ", 'font-size: 1px; color: transparent; padding: 150px 87px;line-height: 300px; background-image: url("https://image.ibb.co/jw4sHS/dev.png")');
+
 const resources = require('./resources');
 const Sprite = require('./sprite');
 const input = require('./input');
