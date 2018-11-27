@@ -1,4 +1,4 @@
-console.log("%c ", 'font-size: 1px; color: transparent; padding: 150px 87px;line-height: 300px; background-image: url("https://image.ibb.co/jw4sHS/dev.png")');
+console.log("%c ", 'font-size: 1px; color: transparent; padding: 150px 87px; background-image: url("https://image.ibb.co/jw4sHS/dev.png")');
 /////////////////////////////////////////////
 //	weapon
 
