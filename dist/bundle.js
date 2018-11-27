@@ -465,7 +465,7 @@ module.exports = Weapon;
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
-console.log("%c", 'font-size: 1px; color: transparent; padding: 150px 87px;line-height: 300px; background-image: url("https://image.ibb.co/jw4sHS/dev.png")');
+console.log("%c ", 'font-size: 1px; color: transparent; padding: 150px 87px;line-height: 300px; background-image: url("https://image.ibb.co/jw4sHS/dev.png")');
 
 const resources = __webpack_require__(5);
 const Sprite = __webpack_require__(1);
